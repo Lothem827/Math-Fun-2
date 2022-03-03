@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - withAnimation
+  - dbObjects
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2790188679
+    locked: 0
+  - name: Mid
+    uniqueID: 1559381855
+    locked: 0
+  - name: Foreground
+    uniqueID: 837264679
+    locked: 0
+  - name: Pause Menu
+    uniqueID: 2627092565
+    locked: 0
+  - name: Pause Menu UI
+    uniqueID: 1589253565
+    locked: 0

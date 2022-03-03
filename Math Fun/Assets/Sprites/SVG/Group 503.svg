@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.454" height="18.534" viewBox="0 0 16.454 18.534">
+  <g id="Group_503" data-name="Group 503" transform="translate(-193.241 -182.266)">
+    <g id="Group_361" data-name="Group 361" transform="translate(-471.097)">
+      <g id="Group_360" data-name="Group 360">
+        <path id="Path_681" data-name="Path 681" d="M678.383,184.672l-1.545,4.035v2.109l1.545-4.035Z" fill="#94006d"/>
+        <path id="Path_682" data-name="Path 682" d="M668.285,188.707l-1.538-4.035v2.109l1.538,4.035Z" fill="#94006d"/>
+        <path id="Path_683" data-name="Path 683" d="M668.285,192.243l-3.947-1.768v2.109l3.947,1.768Z" fill="#94006d"/>
+        <path id="Path_684" data-name="Path 684" d="M676.838,192.243v2.109l3.954-1.768v-2.109Z" fill="#94006d"/>
+        <path id="Path_685" data-name="Path 685" d="M672.565,198.691l-1.77-3.941-4.048,1.536v2.109l4.048-1.536,1.77,3.941,1.77-3.941,4.048,1.536v-2.109l-4.048-1.536Z" fill="#94006d"/>
+      </g>
+    </g>
+    <g id="Group_362" data-name="Group 362" transform="translate(-471.097)">
+      <path id="Path_686" data-name="Path 686" d="M672.565,182.266l1.77,3.941,4.048-1.536-1.545,4.035,3.954,1.768-3.954,1.768,1.545,4.043-4.048-1.536-1.77,3.941-1.77-3.941-4.048,1.536,1.538-4.043-3.947-1.768,3.947-1.768-1.538-4.035,4.048,1.536Z" fill="#ec4cad"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a140d7e4bea344480b77a2c5cbfd0e, type: 3}
+  m_Name: Basic A
+  m_EditorClassIdentifier: 
+  allALevels:
+  - {fileID: 11400000, guid: 6c57ac1a586e03f499b5869a281e676f, type: 2}
+  - {fileID: 11400000, guid: 6abd7e32be9190c45a6e5d9fe5e12d9a, type: 2}
+  - {fileID: 11400000, guid: 79a55579960b2bc47aebc923fe40c455, type: 2}
+  - {fileID: 11400000, guid: cb74ca32e16c4f34fac0a033a72b396c, type: 2}
+  - {fileID: 11400000, guid: 16c9eeca1f4a41c4d964af6e2c450cb7, type: 2}
+  - {fileID: 11400000, guid: 42e4c512d8f203041b3cfc8471e13b3f, type: 2}
+  - {fileID: 11400000, guid: cd395a57fe955364ca64376aea43d718, type: 2}
+  - {fileID: 11400000, guid: 931f198c1749e624ab8b9184f72156e9, type: 2}
+  - {fileID: 11400000, guid: bc37cc6c2f700b84e99f7255e85a9de0, type: 2}
+  - {fileID: 11400000, guid: 8c4e8ce64e1f81348abc567318c67e28, type: 2}
+  - {fileID: 11400000, guid: 1d4e60482be2a0c4cbda8df80b76a753, type: 2}
+  - {fileID: 11400000, guid: 627e85494f4c7374ca5b2bed5d592938, type: 2}
+  - {fileID: 11400000, guid: 4d73350e6371ab44f978a297878ed19f, type: 2}
+  - {fileID: 11400000, guid: f5ac5029b504a6a4689d81de8e75a3c6, type: 2}
+  - {fileID: 11400000, guid: d51e3f74ec7d5fe40a0d3b8a38fdce37, type: 2}
+  - {fileID: 11400000, guid: 3e06a66d7d9f9544fb38b2228ba7263b, type: 2}
+  - {fileID: 11400000, guid: 1d5f880f60123c24493c141fbe73aab8, type: 2}
+  - {fileID: 11400000, guid: c829f055b48033b4e87066e718073971, type: 2}
+  - {fileID: 11400000, guid: 461a0a64e15338540a4cadac3ecff1d8, type: 2}
+  - {fileID: 11400000, guid: 0ce4dd68b92bfdf49b74c1b9c18b41b7, type: 2}
+  - {fileID: 11400000, guid: 008e0dd5a4aec0145919545b019a341d, type: 2}
+  - {fileID: 11400000, guid: e37f78fb55d16fb4599023945820cfca, type: 2}
+  - {fileID: 11400000, guid: d27d19e71879f96498a116f803dfea44, type: 2}
+  - {fileID: 11400000, guid: baebd8399929f9d42921d22d01c87110, type: 2}
+  - {fileID: 11400000, guid: 4325e8993fb854b4098e35b34feac6b2, type: 2}
+  - {fileID: 11400000, guid: f0956a7c848493d44aa2d3aa230cc413, type: 2}
+  - {fileID: 11400000, guid: dea34d33e9ec80543887d9a954a24951, type: 2}
+  - {fileID: 11400000, guid: 2b856615a52a48548862e72670dcbb4a, type: 2}
+  - {fileID: 11400000, guid: ff02d2de26d28324e8754d18bd670a13, type: 2}
+  - {fileID: 11400000, guid: aa60d04cae3bc744180232dc1125e2b3, type: 2}
+  - {fileID: 11400000, guid: 7ad431dc201f75042a79b73969b4a8d8, type: 2}
+  - {fileID: 11400000, guid: 8543496631da84141a5858c1d57d0510, type: 2}
+  - {fileID: 11400000, guid: ba48690747b693a4f8f4e11a4cc3e2ab, type: 2}
+  - {fileID: 11400000, guid: 225db8e589e6558459ea37157f83431b, type: 2}
+  - {fileID: 11400000, guid: 09e6616f1c7a57449848ff074d4e53d5, type: 2}
+  - {fileID: 11400000, guid: be8ba8e2262b1ce48b7fd5ccc41ff394, type: 2}
+  - {fileID: 11400000, guid: d59472cd1dae0c24ca5ca0d7e853f430, type: 2}
+  - {fileID: 11400000, guid: b423dcb6a58e4494681b6c6106dee0e3, type: 2}
+  - {fileID: 11400000, guid: c589f1cbe18ad874f823a51f13fb7773, type: 2}
+  - {fileID: 11400000, guid: 37b84ee1067246f498a54f507cb22226, type: 2}
+  - {fileID: 11400000, guid: c0026e5f59c910e41b1a06f53a613c5a, type: 2}
+  - {fileID: 11400000, guid: 21e980bc629b0ff478b651d887ac9850, type: 2}
+  - {fileID: 11400000, guid: 2d1b92f35eb69a44990af66312e023dc, type: 2}
+  - {fileID: 11400000, guid: 8ca5fb1f15a34e9478d1004300a35f31, type: 2}
+  - {fileID: 11400000, guid: 6f69db7a2d88c7c44bb25c631554428a, type: 2}
+  - {fileID: 11400000, guid: 07931a793a13bed438a2cab81ede9ffd, type: 2}
+  - {fileID: 11400000, guid: c3c6d513af27a0942bd1b79bb74f9878, type: 2}
+  - {fileID: 11400000, guid: 0f378c69461edd94fb1ada9c6dc9036a, type: 2}
+  - {fileID: 11400000, guid: 205cf756cf0122547918ded77af40636, type: 2}
+  - {fileID: 11400000, guid: e1087cec0831fe740acc9697ab98ff50, type: 2}
+  allBLevels: []
+  allCLevels: []
+  allDLevels: []
