@@ -10162,7 +10162,6 @@ MonoBehaviour:
   maxEXP: 0
   currEXP: 0
   baseEXP: 0
-  currCoins: 0
   EXPBar: {fileID: 2058030204}
   level: {fileID: 1243701025}
   coins: {fileID: 1763553360}
