@@ -1,82 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using GoogleMobileAds.Api;
+using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class AdManager : MonoBehaviour
 {
+    private RewardedAd rewardedAd;
 
-    private InterstitialAd interstitialAd;
-    private RewardedInterstitialAd rewardedAd;
-
-    public static AdManager instance;
-    public mainScript mains;
-
-    private void Awake()
+    public void Start()
     {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        MobileAds.Initialize(InitializationStatus => { });
-        loadRewardedAd();
+        MobileAds.Initialize(initStatus => { });
+        LoadRewardedAd();
     }
 
-    private AdRequest createAdRequest()
+    public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-        return new AdRequest.Builder().Build();
+        MonoBehaviour.print("HandleRewardedAdLoaded event received");
     }
 
-    public void RequestInterstitial()
+    public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        string adUnitID = "ca-app-pub-8570623541807082/9839585592";
-        if (this.interstitialAd != null)
-            this.interstitialAd.Destroy();
-
-        this.interstitialAd = new InterstitialAd(adUnitID);
-
-        this.interstitialAd.LoadAd(this.createAdRequest());
+        
     }
 
-    public void showInterstitial()
+    public void HandleRewardedAdOpening(object sender, EventArgs args)
     {
-        if (this.interstitialAd.IsLoaded())
-            interstitialAd.Show();
-        else
-            Debug.Log("Not Ready Yet!");
+        MonoBehaviour.print("HandleRewardedAdOpening event received");
     }
 
-
-    //Rewarded Ads (Double Coins)
-    public void loadRewardedAd()
+    public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-        string adUnitID = "ca-app-pub-8570623541807082/8948705558";
+
+    }
+
+    public void HandleRewardedAdClosed(object sender, EventArgs args)
+    {
+        this.LoadRewardedAd();
+    }
+
+    public void HandleUserEarnedReward(object sender, Reward args)
+    {
+        Debug.Log("Worked");
+    }
+
+    public void LoadRewardedAd()
+    {
+        string adUnitId;
+            #if UNITY_ANDROID
+                    adUnitId = "ca-app-pub-3940256099942544/5224354917";
+            #elif UNITY_IPHONE
+                                adUnitId = "ca-app-pub-3940256099942544/1712485313";
+            #else
+                                adUnitId = "unexpected_platform";
+            #endif
+
+        this.rewardedAd = new RewardedAd(adUnitId);
+
+        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        //this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+      //  this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+       // this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
+        // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
-        RewardedInterstitialAd.LoadAd(adUnitID, request, adLoadCallback);
+        // Load the rewarded ad with the request.
+        this.rewardedAd.LoadAd(request);
+
     }
 
-    private void adLoadCallback(RewardedInterstitialAd arg1, AdFailedToLoadEventArgs arg2)
+    public void ShowRewardedAd()
     {
-        rewardedAd = arg1;
+        if (this.rewardedAd.IsLoaded())
+            this.rewardedAd.Show();
     }
 
-    public void showRewarded()
-    {
-        if (rewardedAd != null)
-            rewardedAd.Show(userEarnedRewardCallback);
-    }
-
-    private void userEarnedRewardCallback(Reward obj)
-    {
-        mains.receiveExtraCoins();
-        Debug.Log("testReward Earned");
-    }
 }

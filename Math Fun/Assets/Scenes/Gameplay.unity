@@ -4462,7 +4462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30a4fc31f2d2474c8a40a7d33ba9a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mains: {fileID: 401512241}
 --- !u!4 &1734505960
 Transform:
   m_ObjectHideFlags: 0
@@ -4526,7 +4525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639792700259421041, guid: 78b87e7cd328b8a40b5739c5f7df832d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: showRewarded
+      value: ShowRewardedAd
       objectReference: {fileID: 0}
     - target: {fileID: 8639792700259421041, guid: 78b87e7cd328b8a40b5739c5f7df832d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

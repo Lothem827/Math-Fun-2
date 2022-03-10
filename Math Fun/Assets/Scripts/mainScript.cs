@@ -201,7 +201,6 @@ public class mainScript : MonoBehaviour
                 coinsReceived = rEXP / 2;
             }
         }
-        Debug.Log(i.isDone_add[level - 1]);
     }
     public void receiveExtraCoins()
     {
