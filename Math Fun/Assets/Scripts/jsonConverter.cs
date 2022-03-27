@@ -44,6 +44,12 @@ public class jsonConverter : MonoBehaviour
         string Json = JsonUtility.ToJson(pInfo);
         File.WriteAllText(paths("/playerInfo.json"), Json);
     }
+    public void updateDifficulty(PlayerInfo pInfo, string _diff)
+    {
+        pInfo.currDifficulty = _diff;
+        string Json = JsonUtility.ToJson(pInfo);
+        File.WriteAllText(paths("/playerInfo.json"), Json);
+    }
 
     public void saveLevels(LevelsArray levels)
     {

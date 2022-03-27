@@ -6,5 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Level Database", menuName = "Assets/Databases/LevelsDB")]
 public class LevelsSelection : ScriptableObject
 {
-    public List<LevelsArray> LevelsDB;
+    public List<LevelsArray> _basicA;
+    public List<LevelsArray> _basicB;
+    public List<LevelsArray> _normalA;
+    public List<LevelsArray> _normalB;
+    public List<LevelsArray> _hard;
+    public List<LevelsArray> _advanced;
+    public List<LevelsArray> _ultra;
 }

@@ -12,5 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8b10cd33eb48b409ed663f5fd6b21d, type: 3}
   m_Name: StatsDB
   m_EditorClassIdentifier: 
-  LevelsDB:
+  _basicA:
   - {fileID: 11400000, guid: 6e3bf1111f9727244b5bd753527d0db3, type: 2}
+  _basicB:
+  - {fileID: 11400000, guid: 6a6ffcc1b5c4fd842a7117ef248cd940, type: 2}
+  _normalA:
+  - {fileID: 11400000, guid: af4d9f203b427814387f56f517c3e857, type: 2}
+  _normalB:
+  - {fileID: 11400000, guid: 00e63a5447067cf4a99f4696ced29c34, type: 2}
+  _hard:
+  - {fileID: 11400000, guid: 760571f64918adb45a5cd30e51226c9c, type: 2}
+  _advanced:
+  - {fileID: 11400000, guid: 8a3c5b3854687e549bd650449189b7c3, type: 2}
+  _ultra:
+  - {fileID: 11400000, guid: 04c14a2ec7bad914f841bfb113272bb6, type: 2}

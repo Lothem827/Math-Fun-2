@@ -9,7 +9,7 @@ public class HScreenEXP : MonoBehaviour
 {
     public int maxEXP, currEXP, baseEXP;
     public Slider EXPBar;
-    public TextMeshProUGUI level, coins;
+    public TextMeshProUGUI level, coins, difficulty;
 
     public jsonConverter updating;
     PlayerInfo playerInfo = null;
@@ -20,6 +20,7 @@ public class HScreenEXP : MonoBehaviour
         currEXP = i.currExp;
         level.text = i.playerLevel.ToString();
         coins.text = i.coins.ToString();
+        difficulty.text = i.currDifficulty;
     }
     public void setEXPValues()
     {
@@ -64,7 +65,8 @@ public class HScreenEXP : MonoBehaviour
     public void Start()
     {
         updating.loadPlayerInfo(PlayerInfoScript.getPlayerInfo());
-        updating.loadLevels(LevelsArrayDB.getCurrentLevel());
+
+        updating.loadLevels(LevelsArrayDB.getBasicA());
         playerInfo = Resources.Load<PlayerInfo>("_SO/Player Info/playerInfo");
         updatePlayerEXP();
         getLevelDetails(PlayerInfoScript.getPlayerInfo());
@@ -74,4 +76,21 @@ public class HScreenEXP : MonoBehaviour
         setEXPValues();
         setCurrentEXP(currEXP);
     }
+    //void loadEachLevels()
+    //{
+    //    if (difficulty == "Basic A")
+    //        setLevel(LevelsArrayDB.getBasicA(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Basic B")
+    //        setLevel(LevelsArrayDB.getBasicB(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Normal A")
+    //        setLevel(LevelsArrayDB.getNormalA(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Normal B")
+    //        setLevel(LevelsArrayDB.getNormalB(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Hard")
+    //        setLevel(LevelsArrayDB.getHard(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Advanced")
+    //        setLevel(LevelsArrayDB.getAdvanced(), pinfo.currOperation, level); //returns current level's information
+    //    else if (difficulty == "Ultra")
+    //        setLevel(LevelsArrayDB.getUltra(), pinfo.currOperation, level); //returns current level's information
+    //}
 }
