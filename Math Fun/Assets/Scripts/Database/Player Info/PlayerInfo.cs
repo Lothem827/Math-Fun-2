@@ -12,4 +12,5 @@ public class PlayerInfo : ScriptableObject
     public string currCategory;
     public string currOperation;
     public int currLevel;
+    public string currDifficulty;
 }

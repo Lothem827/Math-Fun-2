@@ -7,6 +7,8 @@ public class updateHandler : MonoBehaviour
 {
     public List<string> categories = new List<string>();
     public List<string> parentFolder = new List<string>();
+    string[] diffs = new string[]{ "Basic A", "Basic B", "Normal A", "Normal B"
+                                    , "Hard", "Advanced", "Ultra"};
     int baseEXP;
     PlayerInfo playerInfo = null;
 
@@ -37,11 +39,27 @@ public class updateHandler : MonoBehaviour
             playerInfo.currExp = _exp + _eExp;
         }
     }
-
-    public void updateLevelDetails(int level, int stars, string ops)
+    LevelsArray levelinfo(string diff)
     {
-        LevelsArray levelInfo = null;
-        levelInfo = Resources.Load<LevelsArray>("_SO/Levels Stats/LevelsStats");
+        if(diff == "Basic A")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[0]);
+        else if (diff == "Basic B")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[1]);
+        else if (diff == "Normal A")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[2]);
+        else if (diff == "Normal B")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[3]);
+        else if (diff == "Hard")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[4]);
+        else if (diff == "Advanced")
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[5]);
+        else
+            return Resources.Load<LevelsArray>("_SO/Levels Stats/" + diffs[6]);
+    }
+    public void updateLevelDetails(int level, int stars, string ops, string diff)
+    {
+        LevelsArray levelInfo = levelinfo(diff);
+
 
         //changes
         if (level < 50)
@@ -88,10 +106,9 @@ public class updateHandler : MonoBehaviour
             }
         }
     }
-    public void unlockNextLVL(int level, string ops)
+    public void unlockNextLVL(int level, string ops, string diff)
     {
-        LevelsArray levelInfo = null;
-        levelInfo = Resources.Load<LevelsArray>("_SO/Levels Stats/LevelsStats");
+        LevelsArray levelInfo = levelinfo(diff);
 
         //changes
         if (level < 50)

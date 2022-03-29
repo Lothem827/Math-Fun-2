@@ -14,12 +14,14 @@ public class selectLevels : MonoBehaviour
     public updateHandler UpHandler;
     public Sprite[] level_stars_sprite;
     public updateHandler updating;
-
+    public PlayerInfo pInfo;
     int l_stars = 0;
     bool isDone;
+    string difficulty;
 
     void Start()
     {
+        difficulty = pInfo.currDifficulty;   
         for (int i = 0; i < buttons.Length; i++)
         {
             btn_Texts[i].text = (i + 1).ToString();
@@ -50,12 +52,24 @@ public class selectLevels : MonoBehaviour
 
     void setLevelDetails(int level, PlayerInfo pinfo)
     {
-        setLevel(LevelsArrayDB.getCurrentLevel(), pinfo.currOperation, level); //returns current level's information
+        if(difficulty == "Basic A")
+            setLevel(LevelsArrayDB.getBasicA(), pinfo.currOperation, level); //returns current level's information
+        else if(difficulty == "Basic B")
+            setLevel(LevelsArrayDB.getBasicB(), pinfo.currOperation, level); //returns current level's information
+        else if (difficulty == "Normal A")
+            setLevel(LevelsArrayDB.getNormalA(), pinfo.currOperation, level); //returns current level's information
+        else if (difficulty == "Normal B")
+            setLevel(LevelsArrayDB.getNormalB(), pinfo.currOperation, level); //returns current level's information
+        else if (difficulty == "Hard")
+            setLevel(LevelsArrayDB.getHard(), pinfo.currOperation, level); //returns current level's information
+        else if (difficulty == "Advanced")
+            setLevel(LevelsArrayDB.getAdvanced(), pinfo.currOperation, level); //returns current level's information
+        else if (difficulty == "Ultra")
+            setLevel(LevelsArrayDB.getUltra(), pinfo.currOperation, level); //returns current level's information
     }
 
     void setLevel(LevelsArray i, string ops, int level) //stores Level Information
     {
-        Debug.Log(ops);
         if (ops == "add") 
         { 
             l_stars = i.opStars_add[level];

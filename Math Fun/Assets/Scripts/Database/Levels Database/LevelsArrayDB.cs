@@ -21,8 +21,32 @@ public class LevelsArrayDB : MonoBehaviour
         }
     }
 
-    public static LevelsArray getCurrentLevel() // Struct for Levels (initializations)
+    public static LevelsArray getBasicA() // Struct for Levels (initializations)
     {
-        return instance._dbLevels.LevelsDB.FirstOrDefault();
+        return instance._dbLevels._basicA.FirstOrDefault();
+    }
+    public static LevelsArray getBasicB() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
+    }
+    public static LevelsArray getNormalA() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
+    }
+    public static LevelsArray getNormalB() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
+    }
+    public static LevelsArray getHard() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
+    }
+    public static LevelsArray getAdvanced() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
+    }
+    public static LevelsArray getUltra() // Struct for Levels (initializations)
+    {
+        return instance._dbLevels._basicB.FirstOrDefault();
     }
 }

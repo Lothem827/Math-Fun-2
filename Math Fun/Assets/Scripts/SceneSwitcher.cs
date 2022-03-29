@@ -20,12 +20,23 @@ public class SceneSwitcher : MonoBehaviour
     {
         Destroy(gameObject);
         updating.updateCategory(PlayerInfoScript.getPlayerInfo(),_ops);
+        SceneManager.LoadScene("DifficultyMenu", LoadSceneMode.Single);
+    }
+    public void Difficulty(string _diff)
+    {
+        Destroy(gameObject);
+        updating.updateDifficulty(PlayerInfoScript.getPlayerInfo(), _diff);
         SceneManager.LoadScene("LevelMenu", LoadSceneMode.Single);
     }
-
     public void toLevels()
     {
         Destroy(gameObject);
         SceneManager.LoadScene("LevelMenu", LoadSceneMode.Single);
+    }
+
+    public void levelsTodifficulty()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("DifficultyMenu", LoadSceneMode.Single);
     }
 }

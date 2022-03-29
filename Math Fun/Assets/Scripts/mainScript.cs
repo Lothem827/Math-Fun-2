@@ -26,7 +26,7 @@ public class mainScript : MonoBehaviour
     int endofTimer = 0;
     int rEXP, cEXP, currentEXP, currentCoins, coinsReceived;
     //bool[] lvl_isDoneAdd = new bool[50];
-    string ops;
+    string ops, difficulty;
 
     public Sprite[] gameStars_gp, gameStars_mp;
     public SpriteRenderer mpStars, gpStars;
@@ -53,6 +53,8 @@ public class mainScript : MonoBehaviour
 
     private void setLevelDetails(PlayerInfo pinfo)
     {
+        Debug.Log(pinfo.currDifficulty);
+        difficulty = pinfo.currDifficulty;
         setLevel(BasicLevelDatabase.getCurrentLevel(pinfo.currLevel, pinfo.currCategory)); //returns current level's information
         ops = pinfo.currOperation;
         currentEXP = pinfo.currExp;
@@ -60,8 +62,40 @@ public class mainScript : MonoBehaviour
     }
     private void setLevel(BasicLevels i)
     {
-        min = i.minNum;
-        max = i.maxNum;
+        if(difficulty == "Basic A")
+        {
+            min = i.minNum;
+            max = i.maxNum;
+        }else if (difficulty == "Basic B")
+        {
+            min = i.minNum + 4;
+            max = i.maxNum + 8;
+        }
+        else if (difficulty == "Normal A")
+        {
+            min = i.minNum + 8;
+            max = i.maxNum + 16;
+        }
+        else if (difficulty == "Normal B")
+        { 
+            min = i.minNum + 12;
+            max = i.maxNum + 24;
+        }
+        else if (difficulty == "Hard")
+        {
+            min = i.minNum + 24;
+            max = i.maxNum + 42;
+        }
+        else if (difficulty == "Advanced")
+        {
+            min = i.minNum + 48;
+            max = i.maxNum + 84;
+        }
+        else
+        {
+            min = i.minNum + 105;
+            max = i.maxNum + 150;
+        }
         levelRounds = i.rounds;
         level = i.level;
         startTime = i.timer;
@@ -117,7 +151,7 @@ public class mainScript : MonoBehaviour
     }
     void success() //open complete menu and animate
     {
-        displayEXP(LevelsArrayDB.getCurrentLevel());
+        displayEXP(LevelsArrayDB.getBasicA());
         displayCurrLevel();
         PauseMenu.SetActive(true);
         CompleteMenu.SetActive(true);
@@ -266,12 +300,12 @@ public class mainScript : MonoBehaviour
     public void nextLevel() //fuctions when next level button is pressed
     {
         disableGameMenu();
-        expGetter(LevelsArrayDB.getCurrentLevel()); //add and save EXP
-        updating.updateLevelDetails(level, stars, ops); //update level scriptable object LEVEL Nth
-        updating.unlockNextLVL(level, ops);
+        expGetter(LevelsArrayDB.getBasicA()); //add and save EXP
+        updating.updateLevelDetails(level, stars, ops, difficulty); //update level scriptable object LEVEL Nth
+        updating.unlockNextLVL(level, ops, difficulty);
         updating.updateCurrLevel(level); // update pInfo level
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        jsonSaving.saveLevels(LevelsArrayDB.getCurrentLevel());
+        jsonSaving.saveLevels(LevelsArrayDB.getBasicA());
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         randomizer();
         displayCurrLevel();
@@ -290,9 +324,9 @@ public class mainScript : MonoBehaviour
     public void tryAgain()
     {
         disableGameMenu();
-        expGetter(LevelsArrayDB.getCurrentLevel()); //add and save EXP
+        expGetter(LevelsArrayDB.getBasicA()); //add and save EXP
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        jsonSaving.saveLevels(LevelsArrayDB.getCurrentLevel());
+        jsonSaving.saveLevels(LevelsArrayDB.getBasicA());
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         randomizer();
         displayCurrLevel();
@@ -346,7 +380,7 @@ public class mainScript : MonoBehaviour
             gpStars.sprite = gameStars_gp[3];
             stars = 3;
         }
-        displayEXP(LevelsArrayDB.getCurrentLevel());
+        displayEXP(LevelsArrayDB.getBasicA());
         if (stars == 3)
         {
             btn_tryAgain.interactable = false;

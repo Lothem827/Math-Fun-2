@@ -9,9 +9,15 @@ public class AdManager : MonoBehaviour
 {
     private RewardedAd rewardedAd;
 
+    private void Awake()
+    {
+        LoadRewardedAd();
+    }
+
     public void Start()
     {
         MobileAds.Initialize(initStatus => { });
+        //MobileAds.Initialize(initStatus => { Debug.Log("[TestAd] " + initStatus); });
         LoadRewardedAd();
     }
 
