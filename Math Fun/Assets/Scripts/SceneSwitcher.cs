@@ -20,7 +20,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         Destroy(gameObject);
         updating.updateCategory(PlayerInfoScript.getPlayerInfo(),_ops);
-        SceneManager.LoadScene("DifficultyMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
     }
     public void Difficulty(string _diff)
     {
