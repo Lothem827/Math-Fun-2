@@ -50,6 +50,6 @@ public class SceneSwitcher : MonoBehaviour
     public void levelsTodifficulty()
     {
         Destroy(gameObject);
-        SceneManager.LoadScene("DifficultyMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
     }
 }
