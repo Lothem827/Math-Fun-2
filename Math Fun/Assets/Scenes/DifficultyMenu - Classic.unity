@@ -2866,7 +2866,7 @@ GameObject:
   - component: {fileID: 809682564}
   - component: {fileID: 809682563}
   m_Layer: 5
-  m_Name: Free Gift Text
+  m_Name: Operation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2888,8 +2888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000030994415, y: 0}
-  m_SizeDelta: {x: 140, y: 44}
+  m_AnchoredPosition: {x: 5, y: 0}
+  m_SizeDelta: {x: 230, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809682563
 MonoBehaviour:
@@ -3720,6 +3720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b0f05aa478adb44b0e18b083d69cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animate: []
   maxEXP: 0
   currEXP: 0
   baseEXP: 0
@@ -3727,6 +3728,8 @@ MonoBehaviour:
   level: {fileID: 1243701025}
   coins: {fileID: 1763553360}
   difficulty: {fileID: 1954477890}
+  ops: {fileID: 809682563}
+  popUp: {fileID: 1687739725}
   updating: {fileID: 1196342115}
 --- !u!114 &1196342114
 MonoBehaviour:
