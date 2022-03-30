@@ -17,6 +17,7 @@ public class mainScript : MonoBehaviour
     //-----------------------
     float currentTime = 0f;
     float startTime;
+    int menu_anim = 0;
 
     public int cat_index = 0, stars = 0;
     int correctAns, correctansCounter = 0;
@@ -149,23 +150,49 @@ public class mainScript : MonoBehaviour
         CompleteMenu.SetActive(false);
         FailedMenu.SetActive(false);
     }
+    void displayExpFunction()
+    {
+        if (difficulty == "Basic A")
+            displayEXP(LevelsArrayDB.getBasicA());
+        else if (difficulty == "Basic B")
+            displayEXP(LevelsArrayDB.getBasicB());
+        else if (difficulty == "Normal A")
+            displayEXP(LevelsArrayDB.getNormalA());
+        else if (difficulty == "Normal B")
+            displayEXP(LevelsArrayDB.getNormalB());
+        else if (difficulty == "Hard")
+            displayEXP(LevelsArrayDB.getHard());
+        else if (difficulty == "Advanced")
+            displayEXP(LevelsArrayDB.getAdvanced());
+        else
+            displayEXP(LevelsArrayDB.getUltra());
+    }
+
     void success() //open complete menu and animate
     {
-        displayEXP(LevelsArrayDB.getBasicA());
-        displayCurrLevel();
-        PauseMenu.SetActive(true);
-        CompleteMenu.SetActive(true);
-        FailedMenu.SetActive(false);
-        runAnim(0,0);
+        if(menu_anim == 0)
+        {
+            menu_anim++;
+            displayExpFunction();
+            displayCurrLevel();
+            PauseMenu.SetActive(true);
+            CompleteMenu.SetActive(true);
+            FailedMenu.SetActive(false);
+            runAnim(0, 0);
+        }
     }
     void failed() //open failed menu and animate
     {
-        displayCurrLevel();
-        PauseMenu.SetActive(true);
-        CompleteMenu.SetActive(false);
-        FailedMenu.SetActive(true);
-        menuFexp.SetText("+ " + 5 + " EXP");
-        runAnim(1, 1);
+        if (menu_anim == 0)
+        {
+            menu_anim++;
+            displayCurrLevel();
+            PauseMenu.SetActive(true);
+            CompleteMenu.SetActive(false);
+            FailedMenu.SetActive(true);
+            menuFexp.SetText("+ " + 5 + " EXP");
+            runAnim(1, 1);
+        }
     }
 
     void runAnim(int trigger, int animHandler)
@@ -297,15 +324,49 @@ public class mainScript : MonoBehaviour
         }
         currentEXP = 0;
     }
+    void expGetFunction()
+    {
+        if (difficulty == "Basic A")
+            expGetter(LevelsArrayDB.getBasicA());
+        else if (difficulty == "Basic B")
+            expGetter(LevelsArrayDB.getBasicB());
+        else if (difficulty == "Normal A")
+            expGetter(LevelsArrayDB.getNormalA());
+        else if (difficulty == "Normal B")
+            expGetter(LevelsArrayDB.getNormalB());
+        else if (difficulty == "Hard")
+            expGetter(LevelsArrayDB.getHard());
+        else if (difficulty == "Advanced")
+            expGetter(LevelsArrayDB.getAdvanced());
+        else
+            expGetter(LevelsArrayDB.getUltra());
+    }
+    void saveLevelJson()
+    {
+        if (difficulty == "Basic A")
+            jsonSaving.saveLevels(LevelsArrayDB.getBasicA(), difficulty);
+        else if (difficulty == "Basic B")
+            jsonSaving.saveLevels(LevelsArrayDB.getBasicB(), difficulty);
+        else if (difficulty == "Normal A")
+            jsonSaving.saveLevels(LevelsArrayDB.getNormalA(), difficulty);
+        else if (difficulty == "Normal B")
+            jsonSaving.saveLevels(LevelsArrayDB.getNormalB(), difficulty);
+        else if (difficulty == "Hard")
+            jsonSaving.saveLevels(LevelsArrayDB.getHard(), difficulty);
+        else if (difficulty == "Advanced")
+            jsonSaving.saveLevels(LevelsArrayDB.getAdvanced(), difficulty);
+        else
+            jsonSaving.saveLevels(LevelsArrayDB.getUltra(), difficulty);
+    }
     public void nextLevel() //fuctions when next level button is pressed
     {
         disableGameMenu();
-        expGetter(LevelsArrayDB.getBasicA()); //add and save EXP
+        expGetFunction(); //add and save EXP
         updating.updateLevelDetails(level, stars, ops, difficulty); //update level scriptable object LEVEL Nth
         updating.unlockNextLVL(level, ops, difficulty);
         updating.updateCurrLevel(level); // update pInfo level
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        jsonSaving.saveLevels(LevelsArrayDB.getBasicA());
+        saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         randomizer();
         displayCurrLevel();
@@ -319,14 +380,14 @@ public class mainScript : MonoBehaviour
         mpStars.sprite = gameStars_mp[0];
         btn_tryAgain.interactable = true;
         btn_doubleCoins.interactable = true;
-
+        menu_anim = 0;
     }
     public void tryAgain()
     {
         disableGameMenu();
-        expGetter(LevelsArrayDB.getBasicA()); //add and save EXP
+        expGetFunction(); //add and save EXP
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        jsonSaving.saveLevels(LevelsArrayDB.getBasicA());
+        saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         randomizer();
         displayCurrLevel();
@@ -338,6 +399,7 @@ public class mainScript : MonoBehaviour
         correctansCounter = 0;
         gpStars.sprite = gameStars_gp[0];
         mpStars.sprite = gameStars_mp[0];
+        menu_anim = 0;
     }
     void nextRound() // after every round
     {
@@ -380,7 +442,7 @@ public class mainScript : MonoBehaviour
             gpStars.sprite = gameStars_gp[3];
             stars = 3;
         }
-        displayEXP(LevelsArrayDB.getBasicA());
+        displayExpFunction();
         if (stars == 3)
         {
             btn_tryAgain.interactable = false;
