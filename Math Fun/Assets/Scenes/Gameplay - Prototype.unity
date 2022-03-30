@@ -1033,7 +1033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &249715269
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,7 +1395,7 @@ RectTransform:
   m_Children:
   - {fileID: 1540201602}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2428,11 +2428,14 @@ RectTransform:
   - {fileID: 273247259}
   - {fileID: 1327643926}
   - {fileID: 369010665}
+<<<<<<< HEAD
   - {fileID: 1070958422}
   - {fileID: 1867121101}
   - {fileID: 1386681953}
+=======
+>>>>>>> parent of 236e9c5 (Merge branch 'main' of https://github.com/Lothem827/Math-Fun-2)
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4394,19 +4397,137 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070958418}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1616195600}
-  m_Father: {fileID: 697639814}
+  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 180, y: 320}
   m_SizeDelta: {x: 360, y: 640}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!1 &1196342110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196342112}
+  - component: {fileID: 1196342111}
+  - component: {fileID: 1196342113}
+  - component: {fileID: 1196342114}
+  - component: {fileID: 1196342115}
+  - component: {fileID: 1196342116}
+  m_Layer: 5
+  m_Name: << Scripts >>
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1196342111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4757e50263b50534fb1c5344f8effa7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updating: {fileID: 1196342115}
+--- !u!224 &1196342112
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 540, y: 960}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1196342113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b0f05aa478adb44b0e18b083d69cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEXP: 0
+  currEXP: 0
+  baseEXP: 0
+  EXPBar: {fileID: 0}
+  level: {fileID: 0}
+  coins: {fileID: 0}
+  updating: {fileID: 1196342115}
+--- !u!114 &1196342114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d786fe9cad70e0d43b6af7659ff560d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pInfo: {fileID: 11400000, guid: 3b31f193e7a44c14089431794997d9ac, type: 2}
+--- !u!114 &1196342115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119ac4984f986d74e98b7e7e57d2f09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo_JSON: 
+  levels_JSON: 
+--- !u!114 &1196342116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196342110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d053889f0f5b1e849a3a952fd2ef6af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dbLevels: {fileID: 11400000, guid: da61ac0d34f7b26429e643d861444852, type: 2}
+>>>>>>> parent of 236e9c5 (Merge branch 'main' of https://github.com/Lothem827/Math-Fun-2)
 --- !u!1 &1201806548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4773,7 +4894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1290417643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4848,7 +4969,7 @@ RectTransform:
   m_Children:
   - {fileID: 195401983}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7042,8 +7163,6 @@ GameObject:
   - component: {fileID: 1867121100}
   - component: {fileID: 1867121099}
   - component: {fileID: 1867121098}
-  - component: {fileID: 1867121103}
-  - component: {fileID: 1867121102}
   m_Layer: 5
   m_Name: Pop-up Complete
   m_TagString: Untagged
@@ -7110,7 +7229,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1867121101
 RectTransform:
@@ -7119,6 +7238,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867121097}
+<<<<<<< HEAD
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -7399,9 +7519,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967476078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+>>>>>>> parent of 236e9c5 (Merge branch 'main' of https://github.com/Lothem827/Math-Fun-2)
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+<<<<<<< HEAD
   - {fileID: 986285574}
   - {fileID: 1820106443}
   - {fileID: 1843616975}
@@ -7456,6 +7580,20 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
 =======
+=======
+  - {fileID: 1553797264}
+  - {fileID: 1615830374}
+  - {fileID: 1455829234}
+  - {fileID: 1488007838}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+>>>>>>> parent of 236e9c5 (Merge branch 'main' of https://github.com/Lothem827/Math-Fun-2)
 --- !u!1 &1881055668
 GameObject:
   m_ObjectHideFlags: 0
