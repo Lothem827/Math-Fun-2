@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using GoogleMobileAds.Api;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class AdManager : MonoBehaviour
 {
-    public Button playAd;
     private RewardedAd rewardedAd;
 
     private void Awake()
@@ -25,7 +23,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-        //MonoBehaviour.print("HandleRewardedAdLoaded event received");
+        MonoBehaviour.print("HandleRewardedAdLoaded event received");
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
@@ -35,7 +33,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
     {
-        //MonoBehaviour.print("HandleRewardedAdOpening event received");
+        MonoBehaviour.print("HandleRewardedAdOpening event received");
     }
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
@@ -51,7 +49,6 @@ public class AdManager : MonoBehaviour
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         Debug.Log("Worked");
-        playAd.interactable = false;
     }
 
     public void LoadRewardedAd()
@@ -60,7 +57,7 @@ public class AdManager : MonoBehaviour
             #if UNITY_ANDROID
                     adUnitId = "ca-app-pub-3940256099942544/5224354917";
             #elif UNITY_IPHONE
-                                adUnitId = "ca-app-pub-3940256099942544/5224354917";
+                                adUnitId = "ca-app-pub-3940256099942544/1712485313";
             #else
                                 adUnitId = "unexpected_platform";
             #endif

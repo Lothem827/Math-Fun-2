@@ -79,6 +79,7 @@ public class HScreenEXP : MonoBehaviour
             }
         }
     }
+<<<<<<< HEAD
     
     void loadAllLevels()
     {
@@ -90,10 +91,13 @@ public class HScreenEXP : MonoBehaviour
         updating.loadLevels(LevelsArrayDB.getAdvanced());
         updating.loadLevels(LevelsArrayDB.getUltra());
     }
+=======
+>>>>>>> parent of e9cae31 (Merge branch 'main' of https://github.com/Lothem827/Math-Fun-2)
     public void Start()
     {
         updating.loadPlayerInfo(PlayerInfoScript.getPlayerInfo());
-        loadAllLevels();
+
+        updating.loadLevels(LevelsArrayDB.getBasicA());
         playerInfo = Resources.Load<PlayerInfo>("_SO/Player Info/playerInfo");
         updatePlayerEXP();
         getLevelDetails(PlayerInfoScript.getPlayerInfo());

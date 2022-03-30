@@ -31,32 +31,13 @@ public class jsonConverter : MonoBehaviour
     }
     public void loadLevels(LevelsArray levels)
     {
-        if (File.Exists(paths("/BasicA.json")))
-            loadJsonLevels("/BasicA.json", levels);
-
-        if (File.Exists(paths("/BasicB.json")))
-            loadJsonLevels("/BasicB.json", levels);
-
-        if (File.Exists(paths("/NormalA.json")))
-            loadJsonLevels("/NormalA.json", levels);
-
-        if (File.Exists(paths("/NormalB.json")))
-            loadJsonLevels("/NormalB.json", levels);
-
-        if (File.Exists(paths("/Hard.json")))
-            loadJsonLevels("/Hard.json", levels);
-
-        if (File.Exists(paths("/Advanced.json")))
-            loadJsonLevels("/Advanced.json", levels);
-
-        if (File.Exists(paths("/Ultra.json")))
-            loadJsonLevels("/Ultra.json", levels);
+        if (File.Exists(paths("/basic_levels.json")))
+        {
+            levels_JSON = File.ReadAllText(paths("/basic_levels.json"));
+            JsonUtility.FromJsonOverwrite(levels_JSON, levels);
+        }
     }
-    private void loadJsonLevels(string path, LevelsArray levels)
-    {
-        levels_JSON = File.ReadAllText(paths(path));
-        JsonUtility.FromJsonOverwrite(levels_JSON, levels);
-    }
+
     public void updateCategory(PlayerInfo pInfo, string _ops)
     {
         pInfo.currOperation = _ops;
@@ -70,10 +51,10 @@ public class jsonConverter : MonoBehaviour
         File.WriteAllText(paths("/playerInfo.json"), Json);
     }
 
-    public void saveLevels(LevelsArray levels, string pathName)
+    public void saveLevels(LevelsArray levels)
     {
         string Json = JsonUtility.ToJson(levels);
-        File.WriteAllText(paths("/"+ pathName +".json"), Json);
+        File.WriteAllText(paths("/basic_levels.json"), Json);
     }
 
 }
