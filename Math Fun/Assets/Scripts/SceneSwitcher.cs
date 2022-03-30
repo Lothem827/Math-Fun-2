@@ -22,6 +22,19 @@ public class SceneSwitcher : MonoBehaviour
         updating.updateCategory(PlayerInfoScript.getPlayerInfo(),_ops);
         SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
     }
+    public void toArcadetoClassic(string _to)
+    {
+        if(_to == "Classic")
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
+        }
+        else
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("DifficultyMenu - Arcade", LoadSceneMode.Single);
+        }
+    }
     public void Difficulty(string _diff)
     {
         Destroy(gameObject);
