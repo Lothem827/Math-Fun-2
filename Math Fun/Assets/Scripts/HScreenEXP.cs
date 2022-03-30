@@ -62,11 +62,21 @@ public class HScreenEXP : MonoBehaviour
             }
         }
     }
+
+    void loadAllLevels()
+    {
+        updating.loadLevels(LevelsArrayDB.getBasicA());
+        updating.loadLevels(LevelsArrayDB.getBasicB());
+        updating.loadLevels(LevelsArrayDB.getNormalA());
+        updating.loadLevels(LevelsArrayDB.getNormalB());
+        updating.loadLevels(LevelsArrayDB.getHard());
+        updating.loadLevels(LevelsArrayDB.getAdvanced());
+        updating.loadLevels(LevelsArrayDB.getUltra());
+    }
     public void Start()
     {
         updating.loadPlayerInfo(PlayerInfoScript.getPlayerInfo());
-
-        updating.loadLevels(LevelsArrayDB.getBasicA());
+        loadAllLevels();
         playerInfo = Resources.Load<PlayerInfo>("_SO/Player Info/playerInfo");
         updatePlayerEXP();
         getLevelDetails(PlayerInfoScript.getPlayerInfo());
