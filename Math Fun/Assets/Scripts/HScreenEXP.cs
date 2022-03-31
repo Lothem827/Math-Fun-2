@@ -7,9 +7,18 @@ using TMPro;
 
 public class HScreenEXP : MonoBehaviour
 {
+    //Triggers
+    public animationHandler[] animate;
+    string[] triggers = {
+        "buyLevels", "isFailed"
+    };
+
+
     public int maxEXP, currEXP, baseEXP;
     public Slider EXPBar;
-    public TextMeshProUGUI level, coins, difficulty;
+    public TextMeshProUGUI level, coins, difficulty, ops;
+    public GameObject popUp;
+    private int animCount = 0;
 
     public jsonConverter updating;
     PlayerInfo playerInfo = null;
@@ -21,6 +30,14 @@ public class HScreenEXP : MonoBehaviour
         level.text = i.playerLevel.ToString();
         coins.text = i.coins.ToString();
         difficulty.text = i.currDifficulty;
+        if (i.currOperation == "add")
+            ops.text = "Addition";
+        else if (i.currOperation == "sub")
+            ops.text = "Subtraction";
+        else if (i.currOperation == "mult")
+            ops.text = "Multiplication";
+        else if (i.currOperation == "div")
+            ops.text = "Division";
     }
     public void setEXPValues()
     {
@@ -80,27 +97,30 @@ public class HScreenEXP : MonoBehaviour
         playerInfo = Resources.Load<PlayerInfo>("_SO/Player Info/playerInfo");
         updatePlayerEXP();
         getLevelDetails(PlayerInfoScript.getPlayerInfo());
+        popUp.SetActive(false);
     }
     public void Update()
     {
         setEXPValues();
         setCurrentEXP(currEXP);
     }
-    //void loadEachLevels()
-    //{
-    //    if (difficulty == "Basic A")
-    //        setLevel(LevelsArrayDB.getBasicA(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Basic B")
-    //        setLevel(LevelsArrayDB.getBasicB(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Normal A")
-    //        setLevel(LevelsArrayDB.getNormalA(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Normal B")
-    //        setLevel(LevelsArrayDB.getNormalB(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Hard")
-    //        setLevel(LevelsArrayDB.getHard(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Advanced")
-    //        setLevel(LevelsArrayDB.getAdvanced(), pinfo.currOperation, level); //returns current level's information
-    //    else if (difficulty == "Ultra")
-    //        setLevel(LevelsArrayDB.getUltra(), pinfo.currOperation, level); //returns current level's information
-    //}
+
+    void runAnim(int trigger, int animHandler)
+    {
+        animate[animHandler].runTrigger(triggers[trigger]);
+    }
+    public void unlockLevel()
+    {
+        if(animCount == 0)
+        {
+            popUp.SetActive(true);
+            runAnim(0, 0);
+            animCount++;
+        }
+    }
+    public void closePopup()
+    {
+        popUp.SetActive(false);
+        animCount--;
+    }
 }

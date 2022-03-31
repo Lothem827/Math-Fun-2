@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneSwitcher : MonoBehaviour
 {
     public jsonConverter updating;
-    public void homeScreen()
+    public void tohomeScreen()
     {
         Destroy(gameObject);
         SceneManager.LoadScene("HomeScreen", LoadSceneMode.Single);
     }
-    public void gameplay()
+    public void toGameplay()
     {
         Destroy(gameObject);
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
@@ -50,6 +50,6 @@ public class SceneSwitcher : MonoBehaviour
     public void levelsTodifficulty()
     {
         Destroy(gameObject);
-        SceneManager.LoadScene("DifficultyMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
     }
 }
