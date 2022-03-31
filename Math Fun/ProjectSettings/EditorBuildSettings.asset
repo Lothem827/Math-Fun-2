@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 8e24ce31c57b6d240bc413f9a2e3eef8
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
-    guid: 0f30359092dac944cb6a48ab0a3f8a32
+    guid: 38692877b7de8354dad1e9cf999f380e
   - enabled: 1
     path: Assets/Scenes/DifficultyMenu - Classic.unity
     guid: 1223bf193a6b3ed43a10bcbad36aaedd

@@ -9,10 +9,12 @@ public class mainScript : MonoBehaviour
 {
     //Triggers
     public animationHandler[] animate;
+    //string[] triggers = {
+    //    "isCompleted", "isFailed"
+    //};
     string[] triggers = {
-        "isCompleted", "isFailed"
+        "runCompletePopup", "runFailedPopup"
     };
-
 
     //-----------------------
     float currentTime = 0f;
@@ -30,7 +32,7 @@ public class mainScript : MonoBehaviour
     string ops, difficulty;
 
     public Sprite[] gameStars_gp, gameStars_mp;
-    public SpriteRenderer mpStars, gpStars;
+    public Image mpStars, gpStars;
 
     public GameObject FailedMenu, CompleteMenu, PauseMenu;
 
