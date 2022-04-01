@@ -21,7 +21,7 @@ public class mainScript : MonoBehaviour
     float startTime;
     int menu_anim = 0;
 
-    public int cat_index = 0, stars = 0;
+    int stars = 0;
     int correctAns, correctansCounter = 0;
     int num1 = 0, num2 = 0;
     int min = 0, max = 0;

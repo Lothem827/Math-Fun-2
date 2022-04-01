@@ -6,6 +6,7 @@ using System.IO;
 public class jsonConverter : MonoBehaviour
 {
     public string playerInfo_JSON, levels_JSON;
+    string[] difficulties = new string[]{ "BasicA","BasicB","NormalA","NormalB","Hard","Advanced","Ultra" };
     //public string[] level;
     public void Start()
     {
@@ -31,26 +32,13 @@ public class jsonConverter : MonoBehaviour
     }
     public void loadLevels(LevelsArray levels)
     {
-        if (File.Exists(paths("/BasicA.json")))
-            loadJsonLevels("/BasicA.json", levels);
-
-        if (File.Exists(paths("/BasicB.json")))
-            loadJsonLevels("/BasicB.json", levels);
-
-        if (File.Exists(paths("/NormalA.json")))
-            loadJsonLevels("/NormalA.json", levels);
-
-        if (File.Exists(paths("/NormalB.json")))
-            loadJsonLevels("/NormalB.json", levels);
-
-        if (File.Exists(paths("/Hard.json")))
-            loadJsonLevels("/Hard.json", levels);
-
-        if (File.Exists(paths("/Advanced.json")))
-            loadJsonLevels("/Advanced.json", levels);
-
-        if (File.Exists(paths("/Ultra.json")))
-            loadJsonLevels("/Ultra.json", levels);
+        for(int i = 0; i < difficulties.Length; i++)
+        {
+            if (File.Exists(paths("/" + difficulties[i] + ".json")))
+                loadJsonLevels("/BasicA.json", levels);
+            else
+                saveLevels(levels, difficulties[i]);
+        }
     }
     private void loadJsonLevels(string path, LevelsArray levels)
     {

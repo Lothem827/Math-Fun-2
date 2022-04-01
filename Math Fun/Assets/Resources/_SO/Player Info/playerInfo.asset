@@ -15,10 +15,10 @@ MonoBehaviour:
   id: 1
   basis: 10
   playerLevel: 1
-  coins: 4
+  coins: 0
   baseExp: 10
-  currExp: 10
+  currExp: 0
   currCategory: BasicALevels
   currOperation: add
-  currLevel: 3
-  currDifficulty: Basic A
+  currLevel: 6
+  currDifficulty: Normal B
