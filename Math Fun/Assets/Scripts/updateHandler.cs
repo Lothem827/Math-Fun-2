@@ -71,7 +71,10 @@ public class updateHandler : MonoBehaviour
                     levelInfo.opStars_add[level - 1] = stars;
                 }
                 else
-                    levelInfo.opStars_add[level - 1] = stars;
+                {
+                    if (levelInfo.opStars_add[level - 1] != 3)
+                        levelInfo.opStars_add[level - 1] = stars;
+                }
             }
             else if (ops == "sub")
             {
