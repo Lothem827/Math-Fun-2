@@ -64,7 +64,7 @@ public class selectLevels : MonoBehaviour
             setLevel(LevelsArrayDB.getHard(), pinfo.currOperation, level); //returns current level's information
         else if (difficulty == "Advanced")
             setLevel(LevelsArrayDB.getAdvanced(), pinfo.currOperation, level); //returns current level's information
-        else if (difficulty == "Ultra")
+        else
             setLevel(LevelsArrayDB.getUltra(), pinfo.currOperation, level); //returns current level's information
     }
 

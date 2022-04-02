@@ -82,13 +82,23 @@ public class HScreenEXP : MonoBehaviour
 
     void loadAllLevels()
     {
-        updating.loadLevels(LevelsArrayDB.getBasicA());
-        updating.loadLevels(LevelsArrayDB.getBasicB());
-        updating.loadLevels(LevelsArrayDB.getNormalA());
-        updating.loadLevels(LevelsArrayDB.getNormalB());
-        updating.loadLevels(LevelsArrayDB.getHard());
-        updating.loadLevels(LevelsArrayDB.getAdvanced());
-        updating.loadLevels(LevelsArrayDB.getUltra());
+        playerInfo = Resources.Load<PlayerInfo>("_SO/Player Info/playerInfo");
+
+        if(playerInfo.currDifficulty == "Basic A")
+            updating.loadLevels(LevelsArrayDB.getBasicA(), 0);
+        else if (playerInfo.currDifficulty == "Basic B")
+            updating.loadLevels(LevelsArrayDB.getBasicB(), 1);
+        else if (playerInfo.currDifficulty == "Normal A")
+            updating.loadLevels(LevelsArrayDB.getNormalA(), 2);
+        else if (playerInfo.currDifficulty == "Normal B")
+            updating.loadLevels(LevelsArrayDB.getNormalB(), 3);
+        else if (playerInfo.currDifficulty == "Hard")
+            updating.loadLevels(LevelsArrayDB.getHard(), 4);
+        else if (playerInfo.currDifficulty == "Advanced")
+            updating.loadLevels(LevelsArrayDB.getAdvanced(), 5);
+        else
+            updating.loadLevels(LevelsArrayDB.getUltra(), 6);
+
     }
     public void Start()
     {

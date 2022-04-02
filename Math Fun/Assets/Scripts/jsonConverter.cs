@@ -6,7 +6,7 @@ using System.IO;
 public class jsonConverter : MonoBehaviour
 {
     public string playerInfo_JSON, levels_JSON;
-    string[] difficulties = new string[]{ "BasicA","BasicB","NormalA","NormalB","Hard","Advanced","Ultra" };
+    string[] difficulties = new string[]{ "Basic A","Basic B","Normal A","Normal B","Hard","Advanced","Ultra" };
     //public string[] level;
     public void Start()
     {
@@ -30,15 +30,10 @@ public class jsonConverter : MonoBehaviour
             JsonUtility.FromJsonOverwrite(playerInfo_JSON, pInfo);
         }
     }
-    public void loadLevels(LevelsArray levels)
+    public void loadLevels(LevelsArray levels, int _diff)
     {
-        for(int i = 0; i < difficulties.Length; i++)
-        {
-            if (File.Exists(paths("/" + difficulties[i] + ".json")))
-                loadJsonLevels("/BasicA.json", levels);
-            else
-                saveLevels(levels, difficulties[i]);
-        }
+        if (File.Exists(paths("/" + difficulties[_diff] + ".json")))
+            loadJsonLevels("/" + difficulties[_diff] + ".json", levels);
     }
     private void loadJsonLevels(string path, LevelsArray levels)
     {

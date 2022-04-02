@@ -60,7 +60,6 @@ public class updateHandler : MonoBehaviour
     {
         LevelsArray levelInfo = levelinfo(diff);
 
-
         //changes
         if (level < 50)
         {
