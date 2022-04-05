@@ -4763,7 +4763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30a4fc31f2d2474c8a40a7d33ba9a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAd: {fileID: 0}
+  playAd: {fileID: 1553797267}
 --- !u!4 &2004470616
 Transform:
   m_ObjectHideFlags: 0
@@ -5320,6 +5320,34 @@ PrefabInstance:
     - target: {fileID: 998768485934497515, guid: ad3793a57898cc64299df4732d478c69, type: 3}
       propertyPath: m_Name
       value: nextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2004470615}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedAd
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AdManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 998768485999238373, guid: ad3793a57898cc64299df4732d478c69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 998768486162234503, guid: ad3793a57898cc64299df4732d478c69, type: 3}
       propertyPath: m_Name

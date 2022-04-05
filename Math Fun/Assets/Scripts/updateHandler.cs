@@ -84,7 +84,10 @@ public class updateHandler : MonoBehaviour
                     levelInfo.opStars_sub[level - 1] = stars;
                 }
                 else
-                    levelInfo.opStars_sub[level - 1] = stars;
+                {
+                    if (levelInfo.opStars_sub[level - 1] != 3)
+                        levelInfo.opStars_sub[level - 1] = stars;
+                }
             }
             else if (ops == "mult")
             {
@@ -94,7 +97,10 @@ public class updateHandler : MonoBehaviour
                     levelInfo.opStars_mult[level - 1] = stars;
                 }
                 else
-                    levelInfo.opStars_mult[level - 1] = stars;
+                {
+                    if (levelInfo.opStars_mult[level - 1] != 3)
+                        levelInfo.opStars_mult[level - 1] = stars;
+                }
             }
             else
             {
@@ -104,7 +110,10 @@ public class updateHandler : MonoBehaviour
                     levelInfo.opStars_div[level - 1] = stars;
                 }
                 else
-                    levelInfo.opStars_div[level - 1] = stars;
+                {
+                    if (levelInfo.opStars_div[level - 1] != 3)
+                        levelInfo.opStars_div[level - 1] = stars;
+                }
             }
         }
     }
