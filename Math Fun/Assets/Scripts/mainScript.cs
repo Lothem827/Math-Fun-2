@@ -9,9 +9,6 @@ public class mainScript : MonoBehaviour
 {
     //Triggers
     public animationHandler[] animate;
-    //string[] triggers = {
-    //    "isCompleted", "isFailed"
-    //};
     string[] triggers = {
         "runCompletePopup", "runFailedPopup"
     };
@@ -28,7 +25,6 @@ public class mainScript : MonoBehaviour
     int levelRounds, level, currRound = 1;
     int endofTimer = 0;
     int rEXP, cEXP, currentEXP, currentCoins, coinsReceived;
-    //bool[] lvl_isDoneAdd = new bool[50];
     string ops, difficulty;
 
     public Sprite[] gameStars_gp, gameStars_mp;
