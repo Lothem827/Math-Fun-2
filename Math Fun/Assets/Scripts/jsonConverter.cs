@@ -59,4 +59,19 @@ public class jsonConverter : MonoBehaviour
         File.WriteAllText(paths("/"+ pathName +".json"), Json);
     }
 
+    //-------Comparison JSONs----------
+    public void saveComparisontoJSON(ComparingArray compInfo, string _diff)
+    {
+        string Json = JsonUtility.ToJson(compInfo);
+        File.WriteAllText(paths("/Comparison " + _diff + ".json"), Json);
+    }
+
+    public void loadComparison(ComparingArray compInfo, string _diff)
+    {
+        if (File.Exists(paths("/Comparison " + _diff + ".json")))
+        {
+            playerInfo_JSON = File.ReadAllText(paths("/Comparison " + _diff + ".json"));
+            JsonUtility.FromJsonOverwrite(playerInfo_JSON, compInfo);
+        }
+    }
 }

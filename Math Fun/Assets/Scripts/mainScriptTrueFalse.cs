@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
 
-public class mainScript : MonoBehaviour
+public class mainScriptTrueFalse : MonoBehaviour
 {
     //Triggers
     public animationHandler[] animate;
@@ -20,7 +20,7 @@ public class mainScript : MonoBehaviour
 
     int stars = 0;
     int correctAns, correctansCounter = 0;
-    int num1 = 0, num2 = 0;
+    string equation;
     int min = 0, max = 0;
     int levelRounds, level, currRound = 1;
     int endofTimer = 0;
@@ -54,52 +54,18 @@ public class mainScript : MonoBehaviour
     {
         Debug.Log(pinfo.currDifficulty);
         difficulty = pinfo.currDifficulty;
-        setLevel(BasicLevelDatabase.getCurrentLevel(pinfo.currLevel)); //returns current level's information
+        setLevel(ComparingArrayDB.getBasicA(pinfo.currLevel, pinfo.currCategory), pinfo); //returns current level's information
         ops = pinfo.currOperation;
         currentEXP = pinfo.currExp;
         currentCoins = pinfo.coins;
     }
-    private void setLevel(BasicLevels i)
+    private void setLevel(ComparingArray i, PlayerInfo playerInfo)
     {
-        if(difficulty == "Basic A")
-        {
-            min = i.minNum;
-            max = i.maxNum;
-        }else if (difficulty == "Basic B")
-        {
-            min = i.minNum + 4;
-            max = i.maxNum + 8;
-        }
-        else if (difficulty == "Normal A")
-        {
-            min = i.minNum + 8;
-            max = i.maxNum + 16;
-        }
-        else if (difficulty == "Normal B")
-        { 
-            min = i.minNum + 12;
-            max = i.maxNum + 24;
-        }
-        else if (difficulty == "Hard")
-        {
-            min = i.minNum + 24;
-            max = i.maxNum + 42;
-        }
-        else if (difficulty == "Advanced")
-        {
-            min = i.minNum + 48;
-            max = i.maxNum + 84;
-        }
-        else
-        {
-            min = i.minNum + 105;
-            max = i.maxNum + 150;
-        }
-        levelRounds = i.rounds;
-        level = i.level;
-        startTime = i.timer;
-        cEXP = i.completionEXP;
-        rEXP = i.rewardEXP;
+        equation = i.equation[playerInfo.currLevel];
+        level = i.level[playerInfo.currLevel];
+        startTime = i.timer[playerInfo.currLevel];
+        cEXP = i.completionEXP[playerInfo.currLevel];
+        rEXP = i.rewardEXP[playerInfo.currLevel];
 
     }
     public void setRoundValues()
@@ -139,8 +105,6 @@ public class mainScript : MonoBehaviour
         displayCurrLevel();
         gameLevel.text = "Level " + level;
         currentTime = startTime;
-        random();
-        placeChoices();
     }
     void disableGameMenu()
     {
@@ -366,7 +330,6 @@ public class mainScript : MonoBehaviour
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
         saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        randomizer();
         displayCurrLevel();
         setRoundValues();
         setRoundValue(currRound);
@@ -387,7 +350,6 @@ public class mainScript : MonoBehaviour
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
         saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        randomizer();
         displayCurrLevel();
         setRoundValues();
         setRoundValue(currRound);
@@ -465,7 +427,6 @@ public class mainScript : MonoBehaviour
         runTimer();
         if (currentTime <= endofTimer)
         {
-            randomizer();
             nextRound();
             currentTime = startTime;
         }
@@ -483,24 +444,17 @@ public class mainScript : MonoBehaviour
         if (answer == correctAns + "")
         {
             correctansCounter++;
-            randomizer();
             nextRound();
             currentTime = startTime;
         }
         else
         {
-            randomizer();
             nextRound();
             currentTime = startTime;
         }
         updateMPSTars();
     }
 
-    void randomizer()
-    {
-        random();
-        placeChoices();
-    }
     #region Get Choice Values
     public void getChoiceA()
     {
@@ -510,78 +464,6 @@ public class mainScript : MonoBehaviour
     {
         verifyAnswer(btnB.text);
     }
-    public void getChoiceC()
-    {
-        verifyAnswer(btnC.text);
-    }
-    public void getChoiceD()
-    {
-        verifyAnswer(btnD.text);
-    }
     #endregion
 
-    #region Random Placement
-    public void random()
-    {
-        num1 = Random.Range(min, max);
-        num2 = Random.Range(min, max);
-
-        if (num2 > num1 && ops == "sub"){
-            number1.text = num2.ToString();
-            number2.text = num1.ToString();
-        }
-        else if (ops == "div"){
-            number1.text = (num1 * num2).ToString();
-            number2.text = num2.ToString();
-        }
-        else{
-            number1.text = num1.ToString();
-            number2.text = num2.ToString();
-        }
-
-        getAnswer(int.Parse(number1.text), int.Parse(number2.text));
-    }
-    void getAnswer(int nmb1, int nmb2)
-    {
-        if (ops == "add")
-            correctAns = nmb1 + nmb2;
-                else if (ops == "sub")
-                    correctAns = nmb1 - nmb2;
-                        else if (ops == "mult")
-                            correctAns = nmb1 * nmb2;
-                                else
-                                    correctAns = nmb1 / nmb2;
-    }
-
-
-    void placeChoices()
-    {
-        List<int> test = new List<int>();
-        int[] arrayTest = new int[4];
-        test.Add(correctAns);
-
-        for (int i = 1; i < 4; i++)
-        {
-            int rand = Random.Range((correctAns + 1), (correctAns + 5));
-            if (!test.Contains(rand))
-            {
-                test.Add(rand);
-            }
-            else
-            {
-                i--;
-            }
-        }
-
-
-        test.Sort((a, b) => 1 - 2 * Random.Range(0, test.Count));
-
-        btnA.text = test[0].ToString();
-        btnB.text = test[1].ToString();
-        btnC.text = test[2].ToString();
-        btnD.text = test[3].ToString();
-
-
-    }
-    #endregion
 }

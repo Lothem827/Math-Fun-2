@@ -21,13 +21,8 @@ public class BasicLevelDatabase : MonoBehaviour
         }
     }
 
-    public static BasicLevels getCurrentLevel(int level, string category) // Struct for Levels (initializations)
+    public static BasicLevels getCurrentLevel(int level) // Struct for Levels (initializations)
     {
-        if(category == "BasicALevels")
-            return instance.Alevels.allALevels.FirstOrDefault(i => i.level == level);
-        else if (category == "BasicBLevels")
-            return instance.Alevels.allALevels.FirstOrDefault(i => i.level == level);
-        else
-            return instance.Alevels.allALevels.FirstOrDefault(i => i.level == level);
+        return instance.Alevels.allALevels.FirstOrDefault(i => i.level == level);
     }
 }
