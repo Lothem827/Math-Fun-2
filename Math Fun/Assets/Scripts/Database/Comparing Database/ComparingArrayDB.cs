@@ -21,8 +21,9 @@ public class ComparingArrayDB : MonoBehaviour
         }
     }
 
-    public static ComparingArray getBasicA(int level, string category) // Struct for Levels (initializations)
+    public static ComparingArray getBasicA(int _diff) // Struct for Levels (initializations)
     {
-        return instance._dbLevels._basicA.FirstOrDefault();
+        return instance._dbLevels._basicA.FirstOrDefault(i => i.id == _diff);
+        //return instance._dbLevels._basicA.FirstOrDefault();
     }
 }

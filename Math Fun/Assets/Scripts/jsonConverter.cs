@@ -40,9 +40,15 @@ public class jsonConverter : MonoBehaviour
         levels_JSON = File.ReadAllText(paths(path));
         JsonUtility.FromJsonOverwrite(levels_JSON, levels);
     }
-    public void updateCategory(PlayerInfo pInfo, string _ops)
+    public void updateOperation(PlayerInfo pInfo, string _ops)
     {
         pInfo.currOperation = _ops;
+        string Json = JsonUtility.ToJson(pInfo);
+        File.WriteAllText(paths("/playerInfo.json"), Json);
+    }
+    public void updateCategory(PlayerInfo pInfo, string _cat)
+    {
+        pInfo.currCategory = _cat;
         string Json = JsonUtility.ToJson(pInfo);
         File.WriteAllText(paths("/playerInfo.json"), Json);
     }

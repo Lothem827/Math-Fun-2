@@ -19,10 +19,8 @@ public class mainScriptTrueFalse : MonoBehaviour
     int menu_anim = 0;
 
     int stars = 0;
-    int correctAns, correctansCounter = 0;
-    string equation;
-    int min = 0, max = 0;
-    int levelRounds, level, currRound = 1;
+    bool correctAns;
+    int level;
     int endofTimer = 0;
     int rEXP, cEXP, currentEXP, currentCoins, coinsReceived;
     string ops, difficulty;
@@ -38,13 +36,10 @@ public class mainScriptTrueFalse : MonoBehaviour
     public Button btn_tryAgain, btn_doubleCoins;
 
     [SerializeField]
-    TextMeshProUGUI gameTimer, btnA, btnB, btnC, btnD,
-                          number1, number2, roundsText, gameLevel,
-                                menuLevel, menuLevel02,operation;
+    TextMeshProUGUI equation, gameTimer, gameLevel, menuLevel, menuLevel02;
     [SerializeField]
     TextMeshProUGUI menuFexp, menuCexp, menuFcoins, menuCcoins;
 
-    public Slider roundCounter;
 
     #region INITIALIZATIONS
 
@@ -52,31 +47,39 @@ public class mainScriptTrueFalse : MonoBehaviour
 
     private void setLevelDetails(PlayerInfo pinfo)
     {
+        int _diff = 0;
+        if (pinfo.currDifficulty == "Basic A")
+            _diff = 0;
+        else if(pinfo.currDifficulty == "Basic B")
+            _diff = 1;
+        else if(pinfo.currDifficulty == "Normal A")
+            _diff = 2;
+        else if(pinfo.currDifficulty == "Normal B")
+            _diff = 3;
+        else if(pinfo.currDifficulty == "Hard")
+            _diff = 4;
+        else if(pinfo.currDifficulty == "Advanced")
+            _diff = 5;
+        else
+            _diff = 6;
+
+
         Debug.Log(pinfo.currDifficulty);
         difficulty = pinfo.currDifficulty;
-        setLevel(ComparingArrayDB.getBasicA(pinfo.currLevel, pinfo.currCategory), pinfo); //returns current level's information
+        setLevel(ComparingArrayDB.getBasicA(_diff), pinfo); //returns current level's information
         ops = pinfo.currOperation;
         currentEXP = pinfo.currExp;
         currentCoins = pinfo.coins;
     }
     private void setLevel(ComparingArray i, PlayerInfo playerInfo)
     {
-        equation = i.equation[playerInfo.currLevel];
+        correctAns = i.answer[playerInfo.currLevel];
+        equation.text = i.equation[0];
         level = i.level[playerInfo.currLevel];
         startTime = i.timer[playerInfo.currLevel];
         cEXP = i.completionEXP[playerInfo.currLevel];
         rEXP = i.rewardEXP[playerInfo.currLevel];
 
-    }
-    public void setRoundValues()
-    {
-        roundCounter.maxValue = levelRounds;
-        roundCounter.value = currRound;
-    }
-    public void setRoundValue(int round)
-    {
-        roundsText.text = round + "/" + levelRounds;
-        roundCounter.value = round;
     }
     void displayCurrLevel()
     {
@@ -84,24 +87,11 @@ public class mainScriptTrueFalse : MonoBehaviour
         menuLevel.text = "Level " + level;
         menuLevel02.text = "Level " + level;
     }
-    void setOps()
-    {
-        if (ops == "add")
-            operation.text = "+";
-                else if (ops == "sub")
-                    operation.text = "-";
-                        else if (ops == "mult")
-                            operation.text = "×";
-                                else
-                                    operation.text = "÷";
-    }
     void init()
     {
         disableGameMenu();
         //------------------
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        setRoundValues();
-        setRoundValue(currRound);
         displayCurrLevel();
         gameLevel.text = "Level " + level;
         currentTime = startTime;
@@ -306,7 +296,8 @@ public class mainScriptTrueFalse : MonoBehaviour
     void saveLevelJson()
     {
         if (difficulty == "Basic A")
-            jsonSaving.saveLevels(LevelsArrayDB.getBasicA(), difficulty);
+            Debug.Log("test");
+        //jsonSaving.saveComparisontoJSON(ComparingArrayDB.getBasicA(), difficulty);
         else if (difficulty == "Basic B")
             jsonSaving.saveLevels(LevelsArrayDB.getBasicB(), difficulty);
         else if (difficulty == "Normal A")
@@ -331,11 +322,7 @@ public class mainScriptTrueFalse : MonoBehaviour
         saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         displayCurrLevel();
-        setRoundValues();
-        setRoundValue(currRound);
         currentTime = startTime;
-        currRound = 1;
-        correctansCounter = 0;
         stars = 0;
         gpStars.sprite = gameStars_gp[0];
         mpStars.sprite = gameStars_mp[0];
@@ -351,83 +338,34 @@ public class mainScriptTrueFalse : MonoBehaviour
         saveLevelJson();
         setLevelDetails(PlayerInfoScript.getPlayerInfo());
         displayCurrLevel();
-        setRoundValues();
-        setRoundValue(currRound);
         currentTime = startTime;
-        currRound = 1;
-        //stars = 0;
-        correctansCounter = 0;
         gpStars.sprite = gameStars_gp[0];
         mpStars.sprite = gameStars_mp[0];
         menu_anim = 0;
-    }
-    void nextRound() // after every round
-    {
-        if(currRound != levelRounds)
-        {
-            currRound++;
-        }
-        else
-        {
-            if (correctansCounter == 0)
-                failed();
-                    else
-                        success();
-        }
-    }
+    } 
     
     void updateMPSTars() // updates game stars 
     {
-        if (correctansCounter < 1)
-        {
-            mpStars.sprite = gameStars_mp[0];
-            gpStars.sprite = gameStars_gp[0];
-            stars = 0;
-        }
-        else if (correctansCounter < (levelRounds * .5))
-        {
-            mpStars.sprite = gameStars_mp[1];
-            gpStars.sprite = gameStars_gp[1];
-            stars = 1;
-        }
-        else if (correctansCounter <= (levelRounds * .75))
-        {
-            mpStars.sprite = gameStars_mp[2];
-            gpStars.sprite = gameStars_gp[2];
-            stars = 2;
-        }
-        else
-        {
-            mpStars.sprite = gameStars_mp[3];
-            gpStars.sprite = gameStars_gp[3];
-            stars = 3;
-        }
+        mpStars.sprite = gameStars_mp[3];
+        gpStars.sprite = gameStars_gp[3];
+        stars = 3;
         displayExpFunction();
         if (stars == 3)
         {
             btn_tryAgain.interactable = false;
         }
-        //else if(correctansCounter == levelRounds)
-        //{
-        //    mpStars.sprite = gameStars_mp[3];
-        //    gpStars.sprite = gameStars_gp[3];
-        //    stars = 3;
-        //}   
     }
 
     void Start()
     {
         init();
-        setOps();
     }
 
     void Update()
     {
-        setRoundValue(currRound);
         runTimer();
         if (currentTime <= endofTimer)
         {
-            nextRound();
             currentTime = startTime;
         }
         //updateMPSTars();
@@ -439,30 +377,29 @@ public class mainScriptTrueFalse : MonoBehaviour
         gameTimer.text = currentTime.ToString("00:00");
     }
 
-    void verifyAnswer(string answer)
+    void verifyAnswer(bool answer)
     {
-        if (answer == correctAns + "")
+        if (answer == correctAns)
         {
-            correctansCounter++;
-            nextRound();
+            success();
             currentTime = startTime;
         }
         else
         {
-            nextRound();
+            failed();
             currentTime = startTime;
         }
         updateMPSTars();
     }
 
     #region Get Choice Values
-    public void getChoiceA()
+    public void returnTrue()
     {
-        verifyAnswer(btnA.text);
+        verifyAnswer(true);
     }
-    public void getChoiceB()
+    public void returnFalse()
     {
-        verifyAnswer(btnB.text);
+        verifyAnswer(false);
     }
     #endregion
 

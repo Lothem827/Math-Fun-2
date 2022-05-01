@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   basis: 10
-  playerLevel: 0
-  coins: 0
-  baseExp: 10
-  currExp: 0
+  playerLevel: 1
+  coins: 12
+  baseExp: 20
+  currExp: 15
   currCategory: BasicALevels
   currOperation: add
-  currLevel: 6
-  currDifficulty: Basic A
+  currLevel: 1
+  currDifficulty: Basic B

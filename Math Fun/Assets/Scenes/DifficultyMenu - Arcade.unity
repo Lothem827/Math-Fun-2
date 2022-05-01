@@ -2026,7 +2026,7 @@ GameObject:
   - component: {fileID: 476357902}
   - component: {fileID: 476357903}
   m_Layer: 5
-  m_Name: Basic A
+  m_Name: Truelse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2153,14 +2153,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1196342111}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: Difficulty
+        m_MethodName: toLevels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Basic A
+          m_StringArgument: Truelse
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &479670250

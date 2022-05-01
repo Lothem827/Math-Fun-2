@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Comparing Status", menuName = "Assets/Comparing Stats")]
 public class ComparingArray : ScriptableObject
 {
+    public int id;
     public int[] level = new int[50];
     public int[] timer = new int[50];
     public string[] equation = new string[50];

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c4a87ac56ec1646aa290b9e0791b3e, type: 3}
   m_Name: Comparing
   m_EditorClassIdentifier: 
-  _basicA: []
-  _basicB: []
-  _normalA: []
-  _normalB: []
-  _hard: []
-  _advanced: []
-  _ultra: []
+  _basicA:
+  - {fileID: 11400000, guid: a52d5eee6e4b49146bb29cb01177caad, type: 2}
+  - {fileID: 11400000, guid: 8177a0f7b9d4a244eb2aaa395853d265, type: 2}
+  - {fileID: 11400000, guid: 5d8c51ea9add02e48b9e6c43a0404eb7, type: 2}
+  - {fileID: 11400000, guid: fd742b4040a0b3243b4eb727696d35f5, type: 2}
+  - {fileID: 11400000, guid: 31f33523112ac4c45ba28fe558f6e583, type: 2}
+  - {fileID: 11400000, guid: 15553f97f84f5eb4e8905875923ecb6a, type: 2}
+  - {fileID: 11400000, guid: 00a14e3fe7f4035438833c89f4745155, type: 2}
