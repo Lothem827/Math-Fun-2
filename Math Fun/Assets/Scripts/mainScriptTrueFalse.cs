@@ -278,38 +278,24 @@ public class mainScriptTrueFalse : MonoBehaviour
     }
     void expGetFunction()
     {
-        if (difficulty == "Basic A")
-            expGetter(LevelsArrayDB.getBasicA());
-        else if (difficulty == "Basic B")
-            expGetter(LevelsArrayDB.getBasicB());
-        else if (difficulty == "Normal A")
-            expGetter(LevelsArrayDB.getNormalA());
-        else if (difficulty == "Normal B")
-            expGetter(LevelsArrayDB.getNormalB());
-        else if (difficulty == "Hard")
-            expGetter(LevelsArrayDB.getHard());
-        else if (difficulty == "Advanced")
-            expGetter(LevelsArrayDB.getAdvanced());
-        else
-            expGetter(LevelsArrayDB.getUltra());
+        //if (difficulty == "Basic A")
+        //    expGetter(LevelsArrayDB.getBasicA());
+        //else if (difficulty == "Basic B")
+        //    expGetter(LevelsArrayDB.getBasicB());
+        //else if (difficulty == "Normal A")
+        //    expGetter(LevelsArrayDB.getNormalA());
+        //else if (difficulty == "Normal B")
+        //    expGetter(LevelsArrayDB.getNormalB());
+        //else if (difficulty == "Hard")
+        //    expGetter(LevelsArrayDB.getHard());
+        //else if (difficulty == "Advanced")
+        //    expGetter(LevelsArrayDB.getAdvanced());
+        //else
+        //    expGetter(LevelsArrayDB.getUltra());
     }
     void saveLevelJson()
     {
-        if (difficulty == "Basic A")
-            Debug.Log("test");
-        //jsonSaving.saveComparisontoJSON(ComparingArrayDB.getBasicA(), difficulty);
-        else if (difficulty == "Basic B")
-            jsonSaving.saveLevels(LevelsArrayDB.getBasicB(), difficulty);
-        else if (difficulty == "Normal A")
-            jsonSaving.saveLevels(LevelsArrayDB.getNormalA(), difficulty);
-        else if (difficulty == "Normal B")
-            jsonSaving.saveLevels(LevelsArrayDB.getNormalB(), difficulty);
-        else if (difficulty == "Hard")
-            jsonSaving.saveLevels(LevelsArrayDB.getHard(), difficulty);
-        else if (difficulty == "Advanced")
-            jsonSaving.saveLevels(LevelsArrayDB.getAdvanced(), difficulty);
-        else
-            jsonSaving.saveLevels(LevelsArrayDB.getUltra(), difficulty);
+        jsonSaving.saveComparisontoJSON(ComparingArrayDB.getBasicA(0), difficulty);
     }
     public void nextLevel() //fuctions when next level button is pressed
     {

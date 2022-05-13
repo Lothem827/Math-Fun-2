@@ -2954,8 +2954,16 @@ MonoBehaviour:
   animate:
   - {fileID: 1615830378}
   - {fileID: 332638005}
-  gameStars_gp: []
-  gameStars_mp: []
+  gameStars_gp:
+  - {fileID: 21300000, guid: d610626fe1860094a97074ac94047c9d, type: 3}
+  - {fileID: 21300000, guid: 6133e0bd851ddb04ca12908162eb675e, type: 3}
+  - {fileID: 21300000, guid: b00c9f53e2ba13a4abaf3ab090a8344f, type: 3}
+  - {fileID: 21300000, guid: 96e787461f6d746418d7f7b264b9c863, type: 3}
+  gameStars_mp:
+  - {fileID: 21300000, guid: 20bb784f06295d941840277080b835c4, type: 3}
+  - {fileID: 21300000, guid: 616604a30a2022a499dc701353131c22, type: 3}
+  - {fileID: 21300000, guid: 4802b1ec7b96355488742713b8f847ea, type: 3}
+  - {fileID: 21300000, guid: 90b66ce7208cabe4cb9c58e7d78baa7d, type: 3}
   mpStars: {fileID: 998768484715056247}
   gpStars: {fileID: 1481046410}
   FailedMenu: {fileID: 1386681952}
