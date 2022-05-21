@@ -87,7 +87,7 @@ public class HScreenEXP : MonoBehaviour
         if(playerInfo.currDifficulty == "Basic A")
         {
             updating.loadLevels(LevelsArrayDB.getBasicA(), 0);
-            updating.loadComparison(ComparingArrayDB.getBasicA(1), "Basic A");
+            //updating.loadComparison(ComparingArrayDB.getBasicA(1), "Basic A");
         }
         else if (playerInfo.currDifficulty == "Basic B")
             updating.loadLevels(LevelsArrayDB.getBasicB(), 1);

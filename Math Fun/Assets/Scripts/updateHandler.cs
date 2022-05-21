@@ -117,6 +117,11 @@ public class updateHandler : MonoBehaviour
             }
         }
     }
+
+    public void updateTruelseScore(int score)
+    {
+        playerInfo.truelseScore = score;
+    }
     public void unlockNextLVL(int level, string ops, string diff)
     {
         LevelsArray levelInfo = levelinfo(diff);

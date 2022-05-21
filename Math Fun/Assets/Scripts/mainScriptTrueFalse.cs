@@ -20,13 +20,13 @@ public class mainScriptTrueFalse : MonoBehaviour
 
     int stars = 0;
     bool correctAns;
-    int level;
+    int level = 0, score = 0;
     int endofTimer = 0;
+    int min = 1, max = 3;
     int rEXP, cEXP, currentEXP, currentCoins, coinsReceived;
+    int numberCount = 2, eqAns;
+    string _equations;
     string ops, difficulty;
-
-    public Sprite[] gameStars_gp, gameStars_mp;
-    public Image mpStars, gpStars;
 
     public GameObject FailedMenu, CompleteMenu, PauseMenu;
 
@@ -36,64 +36,19 @@ public class mainScriptTrueFalse : MonoBehaviour
     public Button btn_tryAgain, btn_doubleCoins;
 
     [SerializeField]
-    TextMeshProUGUI equation, gameTimer, gameLevel, menuLevel, menuLevel02;
+    TextMeshProUGUI equation, gameTimer, scoreTXT, menuLevel, menuLevel02;
     [SerializeField]
-    TextMeshProUGUI menuFexp, menuCexp, menuFcoins, menuCcoins;
+    TextMeshProUGUI menuCexp, menuCcoins;
 
 
     #region INITIALIZATIONS
-
-
-
-    private void setLevelDetails(PlayerInfo pinfo)
-    {
-        int _diff = 0;
-        if (pinfo.currDifficulty == "Basic A")
-            _diff = 0;
-        else if(pinfo.currDifficulty == "Basic B")
-            _diff = 1;
-        else if(pinfo.currDifficulty == "Normal A")
-            _diff = 2;
-        else if(pinfo.currDifficulty == "Normal B")
-            _diff = 3;
-        else if(pinfo.currDifficulty == "Hard")
-            _diff = 4;
-        else if(pinfo.currDifficulty == "Advanced")
-            _diff = 5;
-        else
-            _diff = 6;
-
-
-        Debug.Log(pinfo.currDifficulty);
-        difficulty = pinfo.currDifficulty;
-        setLevel(ComparingArrayDB.getBasicA(_diff), pinfo); //returns current level's information
-        ops = pinfo.currOperation;
-        currentEXP = pinfo.currExp;
-        currentCoins = pinfo.coins;
-    }
-    private void setLevel(ComparingArray i, PlayerInfo playerInfo)
-    {
-        correctAns = i.answer[playerInfo.currLevel];
-        equation.text = i.equation[0];
-        level = i.level[playerInfo.currLevel];
-        startTime = i.timer[playerInfo.currLevel];
-        cEXP = i.completionEXP[playerInfo.currLevel];
-        rEXP = i.rewardEXP[playerInfo.currLevel];
-
-    }
-    void displayCurrLevel()
-    {
-        gameLevel.text = "Level " + level;
-        menuLevel.text = "Level " + level;
-        menuLevel02.text = "Level " + level;
-    }
     void init()
     {
         disableGameMenu();
         //------------------
-        setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        displayCurrLevel();
-        gameLevel.text = "Level " + level;
+        randomize();
+        scoreTXT.text = score.ToString();
+        startTime = 10;
         currentTime = startTime;
     }
     void disableGameMenu()
@@ -102,56 +57,70 @@ public class mainScriptTrueFalse : MonoBehaviour
         CompleteMenu.SetActive(false);
         FailedMenu.SetActive(false);
     }
-    void displayExpFunction()
-    {
-        if (difficulty == "Basic A")
-            displayEXP(LevelsArrayDB.getBasicA());
-        else if (difficulty == "Basic B")
-            displayEXP(LevelsArrayDB.getBasicB());
-        else if (difficulty == "Normal A")
-            displayEXP(LevelsArrayDB.getNormalA());
-        else if (difficulty == "Normal B")
-            displayEXP(LevelsArrayDB.getNormalB());
-        else if (difficulty == "Hard")
-            displayEXP(LevelsArrayDB.getHard());
-        else if (difficulty == "Advanced")
-            displayEXP(LevelsArrayDB.getAdvanced());
-        else
-            displayEXP(LevelsArrayDB.getUltra());
-    }
 
     void success() //open complete menu and animate
     {
         if(menu_anim == 0)
         {
             menu_anim++;
-            displayExpFunction();
-            displayCurrLevel();
             PauseMenu.SetActive(true);
             CompleteMenu.SetActive(true);
             FailedMenu.SetActive(false);
             runAnim(0, 0);
         }
     }
-    void failed() //open failed menu and animate
-    {
-        if (menu_anim == 0)
-        {
-            menu_anim++;
-            displayCurrLevel();
-            PauseMenu.SetActive(true);
-            CompleteMenu.SetActive(false);
-            FailedMenu.SetActive(true);
-            menuFexp.SetText("+ " + 5 + " EXP");
-            runAnim(1, 1);
-        }
-    }
-
     void runAnim(int trigger, int animHandler)
     {
-        animate[animHandler].runTrigger(triggers[trigger]);
+        //animate[animHandler].runTrigger(triggers[trigger]);
     }
     #endregion
+
+    #region======= RANDOMIZER ================
+    void randomize()
+    {
+        int[] nums = new int[numberCount];
+        for(int i = 0; i < numberCount; i++)
+        {
+            nums[i] = Random.Range(min, max);
+            eqAns += nums[i];
+        }
+        int randomAns = Random.Range(eqAns, eqAns + 3);
+        if (randomAns == eqAns)
+            correctAns = true;
+        else
+            correctAns = false;
+
+        if (numberCount == 2)
+        {
+            _equations = nums[0] + " + " + nums[1] + " = " + randomAns;
+        }
+        else if (numberCount == 3)
+        {
+            _equations = nums[0] + " + " + nums[1] + " + " + nums[2] + " = " + randomAns;
+        }
+        else if (numberCount == 4)
+        {
+            _equations = nums[0] + " + " + nums[1] + " + " + nums[2] + " + " + nums[3] + " = " + randomAns;
+        }
+
+        equation.text = _equations;
+
+    }
+    void increaseNumbers()
+    {
+        if (score % 30 == 0)
+        {
+            if (numberCount < 4)
+                numberCount++;
+        }
+        if (score % 3 == 0)
+        {
+            min++;
+            max+= 2;
+        }
+    }
+    #endregion
+
     void displayEXP(LevelsArray i)
     {
         if (ops == "add")
@@ -218,129 +187,26 @@ public class mainScriptTrueFalse : MonoBehaviour
     public void receiveExtraCoins()
     {
         updating.updateCoins(currentCoins, coinsReceived);
-        setLevelDetails(PlayerInfoScript.getPlayerInfo());
         btn_doubleCoins.interactable = false;
-    }
-    void expGetter(LevelsArray i)
-    {
-        if (ops == "add") {
-            if (!i.isDone_add[level] && stars == 3)
-            {
-                updating.updatePlayerEXP(currentEXP, cEXP);
-                updating.updateCoins(currentCoins, cEXP / 2);
-            }
-            else
-            {
-                updating.updatePlayerEXP(currentEXP, rEXP);
-                updating.updateCoins(currentCoins, rEXP / 2);
-            }
-        }
-        else if (ops == "sub")
-        {
-            if (!i.isDone_sub[level] && stars == 3)
-            {
-                updating.updatePlayerEXP(currentEXP, cEXP);
-                updating.updateCoins(currentCoins, cEXP / 2);
-            }
-            else
-            {
-                updating.updatePlayerEXP(currentEXP, rEXP);
-                updating.updateCoins(currentCoins, rEXP / 2);
-            }
-        }
-        else if (ops == "mult")
-        {
-            if (!i.isDone_mult[level] && stars == 3)
-            {
-                updating.updatePlayerEXP(currentEXP, cEXP);
-                updating.updateCoins(currentCoins, cEXP / 2);
-            }
-            else
-            {
-                updating.updatePlayerEXP(currentEXP, rEXP);
-                updating.updateCoins(currentCoins, rEXP / 2);
-            }
-        }
-        else
-        {
-            if (!i.isDone_div[level] && stars == 3)
-            {
-                updating.updatePlayerEXP(currentEXP, cEXP);
-                updating.updateCoins(currentCoins, cEXP / 2);
-            }
-            else
-            {
-                updating.updatePlayerEXP(currentEXP, rEXP);
-                updating.updateCoins(currentCoins, rEXP / 2);
-            }
-        }
-        currentEXP = 0;
-    }
-    void expGetFunction()
-    {
-        //if (difficulty == "Basic A")
-        //    expGetter(LevelsArrayDB.getBasicA());
-        //else if (difficulty == "Basic B")
-        //    expGetter(LevelsArrayDB.getBasicB());
-        //else if (difficulty == "Normal A")
-        //    expGetter(LevelsArrayDB.getNormalA());
-        //else if (difficulty == "Normal B")
-        //    expGetter(LevelsArrayDB.getNormalB());
-        //else if (difficulty == "Hard")
-        //    expGetter(LevelsArrayDB.getHard());
-        //else if (difficulty == "Advanced")
-        //    expGetter(LevelsArrayDB.getAdvanced());
-        //else
-        //    expGetter(LevelsArrayDB.getUltra());
-    }
-    void saveLevelJson()
-    {
-        jsonSaving.saveComparisontoJSON(ComparingArrayDB.getBasicA(0), difficulty);
     }
     public void nextLevel() //fuctions when next level button is pressed
     {
-        disableGameMenu();
-        expGetFunction(); //add and save EXP
-        updating.updateLevelDetails(level, stars, ops, difficulty); //update level scriptable object LEVEL Nth
-        updating.unlockNextLVL(level, ops, difficulty);
-        updating.updateCurrLevel(level); // update pInfo level
+        updating.updateTruelseScore(score);
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        saveLevelJson();
-        setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        displayCurrLevel();
-        currentTime = startTime;
-        stars = 0;
-        gpStars.sprite = gameStars_gp[0];
-        mpStars.sprite = gameStars_mp[0];
-        btn_tryAgain.interactable = true;
-        btn_doubleCoins.interactable = true;
-        menu_anim = 0;
     }
     public void tryAgain()
     {
         disableGameMenu();
-        expGetFunction(); //add and save EXP
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
-        saveLevelJson();
-        setLevelDetails(PlayerInfoScript.getPlayerInfo());
-        displayCurrLevel();
         currentTime = startTime;
-        gpStars.sprite = gameStars_gp[0];
-        mpStars.sprite = gameStars_mp[0];
+        //gpStars.sprite = gameStars_gp[0];
+        //mpStars.sprite = gameStars_mp[0];
         menu_anim = 0;
+        score = 0;
+        numberCount = 2;
+        eqAns = 0;
+        randomize();
     } 
-    
-    void updateMPSTars() // updates game stars 
-    {
-        mpStars.sprite = gameStars_mp[3];
-        gpStars.sprite = gameStars_gp[3];
-        stars = 3;
-        displayExpFunction();
-        if (stars == 3)
-        {
-            btn_tryAgain.interactable = false;
-        }
-    }
 
     void Start()
     {
@@ -352,6 +218,7 @@ public class mainScriptTrueFalse : MonoBehaviour
         runTimer();
         if (currentTime <= endofTimer)
         {
+            success();
             currentTime = startTime;
         }
         //updateMPSTars();
@@ -367,15 +234,21 @@ public class mainScriptTrueFalse : MonoBehaviour
     {
         if (answer == correctAns)
         {
-            success();
+            //success();
+            menu_anim = 0;
+            level++;
+            score++;
+            eqAns = 0;
+            increaseNumbers();
+            randomize();
+            scoreTXT.text = score.ToString();
             currentTime = startTime;
         }
         else
         {
-            failed();
+            success();
             currentTime = startTime;
         }
-        updateMPSTars();
     }
 
     #region Get Choice Values
