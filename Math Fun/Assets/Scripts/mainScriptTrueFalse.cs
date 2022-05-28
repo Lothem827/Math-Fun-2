@@ -20,15 +20,15 @@ public class mainScriptTrueFalse : MonoBehaviour
 
     int stars = 0;
     bool correctAns;
-    int level = 0, score = 0;
+    int level = 0, score = 0,currentHS_add, currentHS_mult;
     int endofTimer = 0;
     int min = 1, max = 3;
     int rEXP, cEXP, currentEXP, currentCoins, coinsReceived;
     int numberCount = 2, eqAns;
     string _equations;
-    string ops, difficulty;
+    string ops;
 
-    public GameObject FailedMenu, CompleteMenu, PauseMenu;
+    public GameObject CompleteMenu, PauseMenu;
 
     public updateHandler updating;
     public jsonConverter jsonSaving;
@@ -36,15 +36,22 @@ public class mainScriptTrueFalse : MonoBehaviour
     public Button btn_tryAgain, btn_doubleCoins;
 
     [SerializeField]
-    TextMeshProUGUI equation, gameTimer, scoreTXT, menuLevel, menuLevel02;
+    TextMeshProUGUI equation, gameTimer, scoreTXT, menuScore;
     [SerializeField]
     TextMeshProUGUI menuCexp, menuCcoins;
 
 
     #region INITIALIZATIONS
+    void getcurrentHS(PlayerInfo pinfo)
+    {
+        currentHS_add = pinfo.truelseScoreAdd;
+        currentHS_mult = pinfo.truelseScoreMult;
+        ops = pinfo.currOperation;
+    }
     void init()
     {
         disableGameMenu();
+        getcurrentHS(PlayerInfoScript.getPlayerInfo());
         //------------------
         randomize();
         scoreTXT.text = score.ToString();
@@ -55,19 +62,22 @@ public class mainScriptTrueFalse : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         CompleteMenu.SetActive(false);
-        FailedMenu.SetActive(false);
     }
 
     void success() //open complete menu and animate
     {
+        menuScore.text = score.ToString();
         if(menu_anim == 0)
         {
             menu_anim++;
             PauseMenu.SetActive(true);
             CompleteMenu.SetActive(true);
-            FailedMenu.SetActive(false);
             runAnim(0, 0);
         }
+
+        if (score > currentHS_add)
+            saveScore();
+        
     }
     void runAnim(int trigger, int animHandler)
     {
@@ -79,11 +89,28 @@ public class mainScriptTrueFalse : MonoBehaviour
     void randomize()
     {
         int[] nums = new int[numberCount];
-        for(int i = 0; i < numberCount; i++)
+        string _ops;
+        if (ops == "add")
+            _ops = " + ";
+        else
+        {
+            _ops = " x ";
+            eqAns = 1;
+        }
+
+        for (int i = 0; i < numberCount; i++)
         {
             nums[i] = Random.Range(min, max);
-            eqAns += nums[i];
+            if(ops == "add")
+                eqAns += nums[i];
+            else if (ops == "mult")
+                eqAns *= nums[i];
         }
+
+
+        Debug.Log(nums[0]);
+        Debug.Log(nums[1]);
+        Debug.Log(eqAns);
         int randomAns = Random.Range(eqAns, eqAns + 3);
         if (randomAns == eqAns)
             correctAns = true;
@@ -92,15 +119,15 @@ public class mainScriptTrueFalse : MonoBehaviour
 
         if (numberCount == 2)
         {
-            _equations = nums[0] + " + " + nums[1] + " = " + randomAns;
+            _equations = nums[0] + _ops + nums[1] + " = " + randomAns;
         }
         else if (numberCount == 3)
         {
-            _equations = nums[0] + " + " + nums[1] + " + " + nums[2] + " = " + randomAns;
+            _equations = nums[0] + _ops + nums[1] + _ops + nums[2] + " = " + randomAns;
         }
         else if (numberCount == 4)
         {
-            _equations = nums[0] + " + " + nums[1] + " + " + nums[2] + " + " + nums[3] + " = " + randomAns;
+            _equations = nums[0] + _ops + nums[1] + _ops + nums[2] + _ops + nums[3] + " = " + randomAns;
         }
 
         equation.text = _equations;
@@ -189,9 +216,9 @@ public class mainScriptTrueFalse : MonoBehaviour
         updating.updateCoins(currentCoins, coinsReceived);
         btn_doubleCoins.interactable = false;
     }
-    public void nextLevel() //fuctions when next level button is pressed
+    public void saveScore() //fuctions when next level button is pressed
     {
-        updating.updateTruelseScore(score);
+        updating.updateTruelseScore(score,ops);
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
     }
     public void tryAgain()
@@ -199,13 +226,13 @@ public class mainScriptTrueFalse : MonoBehaviour
         disableGameMenu();
         jsonSaving.savePinfotoJSON(PlayerInfoScript.getPlayerInfo());
         currentTime = startTime;
-        //gpStars.sprite = gameStars_gp[0];
-        //mpStars.sprite = gameStars_mp[0];
         menu_anim = 0;
         score = 0;
         numberCount = 2;
         eqAns = 0;
+        scoreTXT.text = "0";
         randomize();
+        getcurrentHS(PlayerInfoScript.getPlayerInfo());
     } 
 
     void Start()
@@ -250,7 +277,6 @@ public class mainScriptTrueFalse : MonoBehaviour
             currentTime = startTime;
         }
     }
-
     #region Get Choice Values
     public void returnTrue()
     {

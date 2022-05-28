@@ -19,6 +19,7 @@ MonoBehaviour:
   baseExp: 20
   currExp: 15
   currCategory: BasicALevels
-  currOperation: add
+  currOperation: sub
   currLevel: 1
   currDifficulty: Basic B
+  truelseScore: 13

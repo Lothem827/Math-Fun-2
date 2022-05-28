@@ -17,8 +17,10 @@ public class HScreenEXP : MonoBehaviour
     public int maxEXP, currEXP, baseEXP;
     public Slider EXPBar;
     public TextMeshProUGUI level, coins, difficulty, ops;
+    public TextMeshProUGUI _truelseCaption;
     public GameObject popUp;
     private int animCount = 0;
+    public Button truelse;
 
     public jsonConverter updating;
     PlayerInfo playerInfo = null;
@@ -33,11 +35,19 @@ public class HScreenEXP : MonoBehaviour
         if (i.currOperation == "add")
             ops.text = "Addition";
         else if (i.currOperation == "sub")
+        {
             ops.text = "Subtraction";
+            truelse.interactable = false;
+            _truelseCaption.text = "Disabled in Subtraction";
+        }
         else if (i.currOperation == "mult")
             ops.text = "Multiplication";
         else if (i.currOperation == "div")
+        {
             ops.text = "Division";
+            truelse.interactable = false;
+            _truelseCaption.text = "Disabled in Division";
+        }
     }
     public void setEXPValues()
     {

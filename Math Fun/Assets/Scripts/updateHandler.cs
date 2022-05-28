@@ -118,9 +118,13 @@ public class updateHandler : MonoBehaviour
         }
     }
 
-    public void updateTruelseScore(int score)
+    public void updateTruelseScore(int score, string ops)
     {
-        playerInfo.truelseScore = score;
+        if(ops == "add")
+            playerInfo.truelseScoreAdd = score;
+        else
+            playerInfo.truelseScoreMult = score;
+
     }
     public void unlockNextLVL(int level, string ops, string diff)
     {
