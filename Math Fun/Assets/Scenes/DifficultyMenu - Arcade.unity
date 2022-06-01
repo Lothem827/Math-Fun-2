@@ -3588,6 +3588,14 @@ MonoBehaviour:
   difficulty: {fileID: 1954477890}
   ops: {fileID: 809682563}
   _truelseCaption: {fileID: 282049002}
+  _lvlsButtons:
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
+  - {fileID: 1954477890}
   popUp: {fileID: 133858849}
   truelse: {fileID: 476357903}
   updating: {fileID: 1196342115}

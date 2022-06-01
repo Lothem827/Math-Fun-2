@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 337490733}
   - component: {fileID: 337490732}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: NA_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 344600314}
   - component: {fileID: 344600313}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: BA_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2226,7 +2226,7 @@ GameObject:
   - component: {fileID: 544247032}
   - component: {fileID: 544247031}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: H__compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3362,7 +3362,7 @@ GameObject:
   - component: {fileID: 1110239409}
   - component: {fileID: 1110239408}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: Adv_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3731,6 +3731,14 @@ MonoBehaviour:
   difficulty: {fileID: 1954477890}
   ops: {fileID: 809682563}
   _truelseCaption: {fileID: 1954477890}
+  _lvlsButtons:
+  - {fileID: 344600313}
+  - {fileID: 2050854762}
+  - {fileID: 337490732}
+  - {fileID: 1813928952}
+  - {fileID: 544247031}
+  - {fileID: 1110239408}
+  - {fileID: 1567769339}
   popUp: {fileID: 1687739725}
   truelse: {fileID: 1954477892}
   updating: {fileID: 1196342115}
@@ -5304,7 +5312,7 @@ GameObject:
   - component: {fileID: 1567769340}
   - component: {fileID: 1567769339}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: U_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6459,7 +6467,7 @@ GameObject:
   - component: {fileID: 1813928953}
   - component: {fileID: 1813928952}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: NB_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7332,7 +7340,7 @@ GameObject:
   - component: {fileID: 2050854763}
   - component: {fileID: 2050854762}
   m_Layer: 5
-  m_Name: Completed text
+  m_Name: BB_compText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3665,7 +3665,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1516954705}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: toLevels
+        m_MethodName: tohomeScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4969,10 +4969,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +
+  m_text: "\xF7"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c0a8b770bcb615d40a9aa1e9fa0beb5a, type: 2}
-  m_sharedMaterial: {fileID: 3068272734213764549, guid: c0a8b770bcb615d40a9aa1e9fa0beb5a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4996,8 +4996,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

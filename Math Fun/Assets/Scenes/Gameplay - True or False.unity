@@ -2995,7 +2995,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1516954705}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: toLevels
+        m_MethodName: tohomeScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
