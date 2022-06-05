@@ -7,7 +7,4 @@ using UnityEngine;
 public class BasicAllLevels : ScriptableObject
 {
     public List<BasicLevels> allALevels;
-    public List<BasicLevels> allBLevels;
-    public List<BasicLevels> allCLevels;
-    public List<BasicLevels> allDLevels;
 }

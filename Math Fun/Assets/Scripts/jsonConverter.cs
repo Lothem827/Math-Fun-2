@@ -40,9 +40,15 @@ public class jsonConverter : MonoBehaviour
         levels_JSON = File.ReadAllText(paths(path));
         JsonUtility.FromJsonOverwrite(levels_JSON, levels);
     }
-    public void updateCategory(PlayerInfo pInfo, string _ops)
+    public void updateOperation(PlayerInfo pInfo, string _ops)
     {
         pInfo.currOperation = _ops;
+        string Json = JsonUtility.ToJson(pInfo);
+        File.WriteAllText(paths("/playerInfo.json"), Json);
+    }
+    public void updateCategory(PlayerInfo pInfo, string _cat)
+    {
+        pInfo.currCategory = _cat;
         string Json = JsonUtility.ToJson(pInfo);
         File.WriteAllText(paths("/playerInfo.json"), Json);
     }
@@ -59,4 +65,19 @@ public class jsonConverter : MonoBehaviour
         File.WriteAllText(paths("/"+ pathName +".json"), Json);
     }
 
+    //-------Comparison JSONs----------
+    public void saveComparisontoJSON(ComparingArray compInfo, string _diff)
+    {
+        string Json = JsonUtility.ToJson(compInfo);
+        File.WriteAllText(paths("/Comparison " + _diff + ".json"), Json);
+    }
+
+    public void loadComparison(ComparingArray compInfo, string _diff)
+    {
+        if (File.Exists(paths("/Comparison " + _diff + ".json")))
+        {
+            playerInfo_JSON = File.ReadAllText(paths("/Comparison " + _diff + ".json"));
+            JsonUtility.FromJsonOverwrite(playerInfo_JSON, compInfo);
+        }
+    }
 }
