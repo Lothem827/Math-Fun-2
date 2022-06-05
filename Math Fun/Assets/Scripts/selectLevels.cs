@@ -46,6 +46,8 @@ public class selectLevels : MonoBehaviour
                 buttons[index].sprite = level_stars_sprite[4];
                 buttons[index].GetComponent<Button>().interactable = false;
             }
+                
+
     }
 
     void setLevelDetails(int level, PlayerInfo pinfo)

@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 337490733}
   - component: {fileID: 337490732}
   m_Layer: 5
-  m_Name: NA_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 344600314}
   - component: {fileID: 344600313}
   m_Layer: 5
-  m_Name: BA_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2226,7 +2226,7 @@ GameObject:
   - component: {fileID: 544247032}
   - component: {fileID: 544247031}
   m_Layer: 5
-  m_Name: H__compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3362,7 +3362,7 @@ GameObject:
   - component: {fileID: 1110239409}
   - component: {fileID: 1110239408}
   m_Layer: 5
-  m_Name: Adv_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3730,17 +3730,7 @@ MonoBehaviour:
   coins: {fileID: 1763553360}
   difficulty: {fileID: 1954477890}
   ops: {fileID: 809682563}
-  _truelseCaption: {fileID: 1954477890}
-  _lvlsButtons:
-  - {fileID: 344600313}
-  - {fileID: 2050854762}
-  - {fileID: 337490732}
-  - {fileID: 1813928952}
-  - {fileID: 544247031}
-  - {fileID: 1110239408}
-  - {fileID: 1567769339}
   popUp: {fileID: 1687739725}
-  truelse: {fileID: 1954477892}
   updating: {fileID: 1196342115}
 --- !u!114 &1196342114
 MonoBehaviour:
@@ -5312,7 +5302,7 @@ GameObject:
   - component: {fileID: 1567769340}
   - component: {fileID: 1567769339}
   m_Layer: 5
-  m_Name: U_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5653,7 +5643,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621058335}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -5686,10 +5676,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1621058337}
+  m_TargetGraphic: {fileID: 476357900}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1196342111}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: Difficulty
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Basic A
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1656782560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6467,7 +6469,7 @@ GameObject:
   - component: {fileID: 1813928953}
   - component: {fileID: 1813928952}
   m_Layer: 5
-  m_Name: NB_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7026,7 +7028,6 @@ GameObject:
   - component: {fileID: 1954477889}
   - component: {fileID: 1954477891}
   - component: {fileID: 1954477890}
-  - component: {fileID: 1954477892}
   m_Layer: 5
   m_Name: dummy
   m_TagString: Untagged
@@ -7150,50 +7151,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954477888}
   m_CullTransparentMesh: 1
---- !u!114 &1954477892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954477888}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1954477890}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2036723045
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,7 +7297,7 @@ GameObject:
   - component: {fileID: 2050854763}
   - component: {fileID: 2050854762}
   m_Layer: 5
-  m_Name: BB_compText
+  m_Name: Completed text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
