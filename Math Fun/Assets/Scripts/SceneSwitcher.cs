@@ -19,15 +19,9 @@ public class SceneSwitcher : MonoBehaviour
     public void BasicLevels(string _ops)
     {
         Destroy(gameObject);
-        updating.updateOperation(PlayerInfoScript.getPlayerInfo(),_ops);
+        updating.updateCategory(PlayerInfoScript.getPlayerInfo(),_ops);
         SceneManager.LoadScene("DifficultyMenu - Classic", LoadSceneMode.Single);
     }
-    public void Truelse()
-    {
-        Destroy(gameObject);
-        SceneManager.LoadScene("Gameplay - True or False", LoadSceneMode.Single);
-    }
-
     public void toArcadetoClassic(string _to)
     {
         if(_to == "Classic")
@@ -47,10 +41,9 @@ public class SceneSwitcher : MonoBehaviour
         updating.updateDifficulty(PlayerInfoScript.getPlayerInfo(), _diff);
         SceneManager.LoadScene("LevelMenu", LoadSceneMode.Single);
     }
-    public void toLevels(string _cat)
+    public void toLevels()
     {
         Destroy(gameObject);
-        updating.updateOperation(PlayerInfoScript.getPlayerInfo(), _cat);
         SceneManager.LoadScene("LevelMenu", LoadSceneMode.Single);
     }
 
