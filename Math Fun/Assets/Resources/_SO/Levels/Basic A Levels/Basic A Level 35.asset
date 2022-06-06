@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCategory: Basic A
   timer: 5
-  rounds: 8
+  rounds: 5
   level: 35
   minNum: 2
   maxNum: 8
   completionEXP: 25
   rewardEXP: 5
+  opStars: 00000000000000000000000000000000
+  isDone: 00000000
+  notLocked: 00000000

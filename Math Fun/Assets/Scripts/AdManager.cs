@@ -21,6 +21,8 @@ public class AdManager : MonoBehaviour
         MobileAds.Initialize(initStatus => { });
         //MobileAds.Initialize(initStatus => { Debug.Log("[TestAd] " + initStatus); });
         LoadRewardedAd();
+
+        //test
     }
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
